@@ -16,11 +16,14 @@ program or source is bundled. The public evidence document summarizes implementa
 contracts and limitations; private authoring research and development prompts are not included.
 Historical research references have not all been independently reverified.
 
-The UI model-hint catalog uses individual PCI model facts from PCI ID Project's pci.ids
-version 2026.10.15 (https://raw.githubusercontent.com/pciutils/pciids/master/pci.ids) and
-Linux kernel PROM21 xHCI documentation
-(https://www.kernel.org/doc/html/latest/hwmon/prom21-xhci.html, checked 2026-10-15).
-Neither the database nor Linux kernel source code is distributed.
+The controller placement catalog (`src/UsbAtlas.Core/controller-catalog.json`) is an
+extracted subset of the PCI ID Repository's `pci.ids` (https://pci-ids.ucw.cz/, version
+2026.10.15), limited to Intel and AMD USB host controllers. pci.ids is a compilation of
+factual data maintained by Albert Pool, Martin Mares and volunteers; it can be distributed
+under the GNU GPL v2 or later or the 3-clause BSD License. USB Atlas redistributes the subset
+under the 3-clause BSD License; see `docs/licenses/PCI-IDS-LICENSE.txt`. The placement class
+of each entry (CPU/SoC, chipset, on-package chipset, add-in controller) is USB Atlas's own
+inference from the product name, produced by `tools/generate-controller-catalog.py`.
 
 Development dependencies include xUnit 2.9.3, xUnit VS Runner 4.0.1,
 Microsoft.NET.Test.Sdk 18.11.0 and Windows SDK BuildTools.

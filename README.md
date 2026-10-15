@@ -23,9 +23,12 @@ USBView shows, and draws it as a color-coded tree you can click through.
   offered HID service interval, the SuperSpeed link check and Windows connection errors.
   Rules that need traffic, mode or RF observations stay "not assessable" until a separate,
   validated observation source feeds them; they are listed, not hidden.
-- **CPU or chipset hint for root hubs.** For known PCI IDs the root hub card says
-  *Likely CPU/SoC* or *Likely chipset*, with the public source behind the hint. Unknown
-  IDs say so instead of guessing.
+- **CPU or chipset hint for root hubs.** The root hub card says *Likely CPU/SoC*,
+  *Likely chipset*, *Likely chipset (on CPU package)* or *Likely add-in controller*, based on
+  the controller's name in the PCI ID Repository. The catalog covers about 200 Intel and
+  AMD USB host controllers from ICH to the current Core Ultra and Ryzen platforms. Click
+  the card for the pci.ids entry and the reasoning. IDs outside the catalog say so instead
+  of guessing.
 - **Expert mode** adds descriptors, open pipes, offered endpoints, transaction translator
   flags and every data gap the scan hit.
 

@@ -24,14 +24,30 @@ public class SinglePageAssessmentTests
         var c = Controller("43FC");
         var hint = ControllerPlacementHint.For(Snapshot(c), c);
         Assert.Equal("Likely chipset", hint.Label);
-        Assert.Contains("prom21-xhci", hint.Source);
+        Assert.Contains("800 Series Chipset", hint.Explanation);
+        Assert.Contains("pci.ids", hint.Source);
     }
 
-    [Theory] [InlineData("43F4", "1022")] [InlineData("15B6", "8086")] [InlineData("FFFF", "1022")]
+    [Theory] [InlineData("43F4", "1022")] [InlineData("0000", "8086")] [InlineData("FFFF", "1022")]
     public void BridgeOtherVendorAndUnknownIdsAreNotGuessed(string id, string vendor)
     {
         var c = Controller(id, vendor);
         Assert.Equal("Connection origin unknown", ControllerPlacementHint.For(Snapshot(c), c).Label);
+    }
+
+    [Theory]
+    [InlineData("8086", "A2AF", "Likely chipset")]
+    [InlineData("8086", "9D2F", "Likely chipset (on CPU package)")]
+    [InlineData("8086", "9A13", "Likely CPU/SoC")]
+    [InlineData("8086", "15D4", "Likely add-in controller")]
+    public void IntelControllersAreClassifiedFromTheCatalog(string vendor, string id, string label)
+    {
+        var c = Controller(id, vendor);
+        var hint = ControllerPlacementHint.For(Snapshot(c), c);
+        Assert.Equal(label, hint.Label);
+        Assert.Contains($"PCI {vendor}:{id} is listed in pci.ids", hint.Explanation);
+        Assert.Contains("does not verify the motherboard wiring", hint.Explanation);
+        Assert.NotNull(hint.Source);
     }
 
     [Fact]

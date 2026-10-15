@@ -16,7 +16,10 @@ and an explainable, evidence-limited assessment.
   facts (mode contracts, active isochronous or sustained load, RF exposure, feasible tests).
 - Snapshot comparison by device identity (`UsbSnapshotManager.Compare`) and the R30
   port-change rule, available in Core for a future comparison view.
-- Presentation-only CPU/chipset hint for known controller PCI IDs (`ControllerPlacementHint`).
+- Controller placement hint (`UsbControllerCatalog`, `ControllerPlacementHint`): about 200 Intel and
+  AMD USB host controllers from pci.ids 2026.10.15, classified as CPU/SoC, chipset, on-package
+  chipset or add-in controller from their product names. Regenerate with
+  `tools/generate-controller-catalog.py`.
 - Expert mode with descriptors, open pipes, offered endpoints and data gaps.
 
 ## Assessment coverage
@@ -42,5 +45,6 @@ remain "not assessable"; the assessment flyout lists them with their missing pre
 
 - No end-to-end latency, report rate, RF or traffic measurement.
 - No physical socket position inference and no front/rear recommendation.
-- The model-hint catalog covers a handful of AMD controller IDs. Others say "unknown".
+- The placement hint is a name-based inference, not a board fact. Controllers from other
+  vendors (ASMedia, VIA, Renesas) and IDs missing from pci.ids say "unknown".
 - No system, driver, firmware, registry or power-plan changes.
