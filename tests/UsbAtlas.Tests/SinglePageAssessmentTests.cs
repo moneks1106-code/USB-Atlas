@@ -7,7 +7,7 @@ public class SinglePageAssessmentTests
 {
     private static UsbNode Controller(string pid = "15B6", string vendor = "1022") => Fixture.Controller("c", vendor, pid);
     private static UsbSnapshot Snapshot(params UsbNode[] nodes) => Fixture.Snapshot(nodes);
-    private static Finding Finding(Assessment status) => new("fixture", "d", status, "Title", "Explanation", [], [], "");
+    private static Finding Finding(Assessment status) => new("fixture", "d", status, "Title", "Explanation", [], [], [], "", "");
 
     [Theory] [InlineData("15B6")] [InlineData("15b7")] [InlineData("15B8")]
     public void ExactAmdSocModelsHaveQualifiedInference(string id)
@@ -55,38 +55,43 @@ public class SinglePageAssessmentTests
     public void NoScanAndNoDevicesDoNotGetCleanBillOfHealth()
     {
         Assert.Contains("first scan", ConfigurationSummary.Create(null, []).Title);
-        Assert.Contains("No USB devices", ConfigurationSummary.Create(Snapshot(Controller()), []).Title);
+        Assert.Contains("cannot be assessed", ConfigurationSummary.Create(Snapshot(Controller()), []).Title);
     }
 
     [Fact]
     public void ProblemsTakePrecedenceOverGapsAndInconsistency()
     {
         var s = Fixture.Simple() with { Consistent = false, Warnings = ["missing"] };
-        var result = ConfigurationSummary.Create(s, [Finding(Assessment.Problem), Finding(Assessment.Problem)]);
-        Assert.Equal("2 ports report connection errors.", result.Title);
-        Assert.Contains("could not be read", result.Body);
+        var result = ConfigurationSummary.Create(s, [Finding(Assessment.Problem), Finding(Assessment.NotAssessable)]);
+        Assert.Equal("Your USB configuration has one detected problem.", result.Title);
+        Assert.Contains("cannot yet be assessed", result.Body);
     }
 
     [Fact]
     public void InconsistentScanIsNotCalledHealthy()
     {
-        Assert.Contains("inconsistent", ConfigurationSummary.Create(Fixture.Simple() with { Consistent = false }, []).Title);
+        Assert.Contains("reliably", ConfigurationSummary.Create(Fixture.Simple() with { Consistent = false }, []).Title);
     }
 
     [Fact]
-    public void NotesAreVisibleWithoutCallingThemErrors()
+    public void UnknownRulesQualifyUnremarkableObservedConfiguration()
     {
-        var result = ConfigurationSummary.Create(Fixture.Simple(), [Finding(Assessment.Note)]);
-        Assert.Equal("No connection errors. One note is worth a look.", result.Title);
-        Assert.Contains("not a latency measurement", result.Body);
+        var result = ConfigurationSummary.Create(Fixture.Simple(), [Finding(Assessment.NotAssessable)]);
+        Assert.Contains("observed", result.Title);
+        Assert.Contains("Missing data", result.Body);
+    }
+
+    [Fact]
+    public void TestNeedsAreVisibleWithoutCallingThemProblems()
+    {
+        Assert.Contains("Further checks", ConfigurationSummary.Create(Fixture.Simple(), [Finding(Assessment.Check)]).Title);
     }
 
     [Fact]
     public void CleanObservedConfigurationDoesNotPromiseLatency()
     {
         var result = ConfigurationSummary.Create(Fixture.Simple(), [Finding(Assessment.Ok)]);
-        Assert.Equal("No connection errors in the observed USB tree.", result.Title);
+        Assert.Equal("Your observed USB configuration looks healthy.", result.Title);
         Assert.Contains("not a latency measurement", result.Body);
-        Assert.DoesNotContain("could not be read", result.Body);
     }
 }

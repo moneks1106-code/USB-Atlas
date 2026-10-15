@@ -6,7 +6,7 @@ public enum NodeKind { Controller, RootHub, Hub, Port, Device }
 public enum LinkSpeed { Unknown, Low, Full, High, Super, SuperPlus }
 public enum PortState { Unknown, Empty, Connected, Error }
 public enum DeviceRole { Unknown, Mouse, Keyboard, Gamepad, Receiver, Audio, Camera, Capture, Storage, Hub, InternalControl, Other }
-public enum Assessment { Ok, Note, Problem }
+public enum Assessment { Ok, Note, Check, Problem, NotAssessable }
 public enum TtMode { Unknown, Single, Multi, NotApplicable }
 
 public sealed record Endpoint(byte Address, byte TransferType, ushort MaxPacketSize, byte Interval,
@@ -70,6 +70,8 @@ public sealed record UsbNode
 
     [JsonIgnore] public bool IsPhysical => Kind is NodeKind.Device or NodeKind.Hub;
     [JsonIgnore] public bool IsHid => DeviceClass == 3 || InterfaceClasses.Contains((byte)3);
+    [JsonIgnore] public string? SerialKey => !string.IsNullOrWhiteSpace(SerialNumber) && VendorId != null && ProductId != null
+        ? $"{VendorId}:{ProductId}:{SerialNumber}" : null;
 }
 
 public sealed record UsbSnapshot(Guid Revision, DateTimeOffset CapturedUtc, string OsVersion,
@@ -84,9 +86,14 @@ public sealed record UsbSnapshot(Guid Revision, DateTimeOffset CapturedUtc, stri
     [JsonIgnore] public IEnumerable<UsbNode> Ports => Nodes.Where(n => n.Kind == NodeKind.Port);
 }
 
-/// <summary>Result of one configuration check on one node. Every finding names what was observed and what it does not prove.</summary>
+/// <summary>Result of one rule on one node. Every finding names what was observed, what is missing and what it does not prove.</summary>
 public sealed record Finding(string RuleId, string NodeId, Assessment Status, string Title, string Explanation,
-    string[] Observed, string[] Sources, string Limitations);
+    string[] Observed, string[] Missing, string[] Sources, string Scope, string Limitations);
+public sealed record DeviceDelta(string? BeforeId, string? AfterId, string IdentityConfidence, string Kind,
+    string[] Changes, string? BeforePort, string? AfterPort, string? BeforeController, string? AfterController,
+    string[] BeforeHubs, string[] AfterHubs);
+public sealed record SnapshotComparison(Guid BeforeRevision, Guid AfterRevision, DeviceDelta[] Devices,
+    string[] ResolvedProblems, string[] NewProblems, string Conclusion);
 
 public interface IUsbTopologyScanner
 {

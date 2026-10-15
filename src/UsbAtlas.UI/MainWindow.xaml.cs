@@ -180,8 +180,9 @@ public sealed partial class MainWindow : Window
             FontWeight = Microsoft.UI.Text.FontWeights.SemiBold, TextWrapping = TextWrapping.Wrap });
         details.Children.Add(new TextBlock { Text = ViewModel.AssessmentCounts, TextWrapping = TextWrapping.Wrap });
         details.Children.Add(new TextBlock { Text = ViewModel.FindingsText, TextWrapping = TextWrapping.Wrap, IsTextSelectionEnabled = true });
-        details.Children.Add(new Expander { Header = "Scan data gaps", HorizontalAlignment = HorizontalAlignment.Stretch,
-            Content = new TextBlock { Text = ViewModel.ScanWarnings, TextWrapping = TextWrapping.Wrap, IsTextSelectionEnabled = true } });
+        foreach (var section in new[] { ("Scan data gaps", ViewModel.ScanWarnings), ("Properties that cannot be assessed", ViewModel.UnknownText) })
+            details.Children.Add(new Expander { Header = section.Item1, HorizontalAlignment = HorizontalAlignment.Stretch,
+                Content = new TextBlock { Text = section.Item2, TextWrapping = TextWrapping.Wrap, IsTextSelectionEnabled = true } });
         new Flyout { Content = new ScrollViewer { Content = details, MaxHeight = 560,
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled } }.ShowAt(target);
     }

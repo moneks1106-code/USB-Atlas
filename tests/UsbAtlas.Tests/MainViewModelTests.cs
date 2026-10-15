@@ -18,7 +18,7 @@ public class MainViewModelTests : IDisposable
 
     private readonly string directory = Path.Combine(Path.GetTempPath(), "UsbAtlasTests", Guid.NewGuid().ToString());
 
-    private MainViewModel Create(FakeScanner scanner) => new(scanner, new UsbSnapshotManager(directory), new UsbRuleEngine());
+    private MainViewModel Create(FakeScanner scanner) => new(scanner, new UsbSnapshotManager(directory), new UsbRuleEngine(new UsbEvidenceRegistry()));
 
     public void Dispose()
     {
@@ -37,7 +37,7 @@ public class MainViewModelTests : IDisposable
         Assert.False(vm.HasError);
         Assert.StartsWith("Snapshot saved", vm.Message);
         Assert.True(File.Exists(Path.Combine(directory, "latest.json")));
-        Assert.Equal("No connection errors in the observed USB tree.", vm.StatusTitle);
+        Assert.Equal("Your observed USB configuration looks healthy.", vm.StatusTitle);
     }
 
     [Fact]
@@ -119,8 +119,10 @@ public class MainViewModelTests : IDisposable
             Fixture.Port("c/root", 2), ssd, broken);
         var vm = Create(new FakeScanner(() => snapshot));
         await vm.InitializeAsync();
-        Assert.Equal("One port reports a connection error.", vm.StatusTitle);
-        Assert.StartsWith("1 problems · 1 notes · 1 confirmed properties", vm.AssessmentCounts);
+        Assert.Equal("Your USB configuration has one detected problem.", vm.StatusTitle);
+        Assert.StartsWith("1 confirmed problems · 0 comparison tests", vm.AssessmentCounts);
+        Assert.Contains("R44 · ", vm.UnknownText);
+        Assert.DoesNotContain("NOT ASSESSABLE", vm.FindingsText);
         Assert.StartsWith("PROBLEM · Port 3", vm.FindingsText);
         Assert.Contains("NOTE · External SSD", vm.FindingsText);
         Assert.Contains("OK · Gaming Mouse", vm.FindingsText);
@@ -136,7 +138,7 @@ public class MainViewModelTests : IDisposable
         await vm.InitializeAsync();
         Assert.Contains("Hotplug notifications unavailable.", vm.ScanWarnings);
         Assert.Contains("Gaming Mouse: String/serial descriptor: timeout", vm.ScanWarnings);
-        Assert.Contains("could not be read", vm.StatusBody);
+        Assert.Contains("Missing data limits the assessment", vm.StatusBody);
     }
 
     [Fact]

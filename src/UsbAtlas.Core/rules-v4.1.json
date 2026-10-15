@@ -1,0 +1,362 @@
+[
+  {
+    "Id": "R01",
+    "Criterion": "High-polling HID behind an additional hub",
+    "Evidence": "VENDOR_GUIDANCE + SPEC; observable: hub chain and HS endpoint; actual report rate requires separate evidence",
+    "Action": "Test a native root socket; do not assume a general lag penalty. Test: T_PORT/T_RATE. Sources: RAZER_8K,MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R02",
+    "Criterion": "High-polling device on EHCI or a legacy host",
+    "Evidence": "REVIEWER_MEASURED_FOR_TEST_SETUP; observable: host model/endpoint; EHCI alone does not establish the rate",
+    "Action": "Do not claim EHCI can never support 8 kHz. Test: T_RATE. Sources: TPU_RAZER,MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R03",
+    "Criterion": "Two HID devices at 2 kHz or above on the same external hub",
+    "Evidence": "VENDOR_GUIDANCE + MECHANISTIC_PLAUSIBLE; observable: an actual shared hub upstream",
+    "Action": "Compare separate root ports. Test: T_LOAD/T_PORT. Sources: RAZER_8K,MS_BW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R04",
+    "Criterion": "Two HID devices at 2 kHz or above on different root ports of one xHCI",
+    "Evidence": "SPEC; observable: two distinct root-port paths",
+    "Action": "Do not penalize devices just for sharing xHCI. Test: T_LOAD. Sources: MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R05",
+    "Criterion": "HID shares a USB 2 hub upstream with active isochronous audio/video",
+    "Evidence": "SPEC + PLAUSIBLE; observable: active isochronous endpoint and bandwidth domain required",
+    "Action": "Confirm the load first, then test a separate hub. Test: T_LOAD. Sources: MS_BW,ELG_TRANS.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R06",
+    "Criterion": "Full-Speed HID and active Full-Speed isochronous traffic share a confirmed Single-TT hub",
+    "Evidence": "SPEC + PLAUSIBLE; observable: USB_HUB_CAP_FLAGS.HubIsMultiTtCapable/HubIsMultiTt through hub IOCTLs, where queryable",
+    "Action": "With actual load and symptoms, compare another hub or Multi-TT hub without assuming a conflict. Test: T_LOAD. Sources: MS_BW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R07",
+    "Criterion": "Two High-Speed cameras share an actual periodic bandwidth budget",
+    "Evidence": "OS_DOC + SPEC; observable: active isochronous transfers and shared resource context required",
+    "Action": "If failures or dropped frames occur, compare a separate hub/controller. Test: T_VIDEO. Sources: MS_BW,ELG_TRANS.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R08",
+    "Criterion": "A 2.4 GHz dongle is physically close to an active SuperSpeed emitter",
+    "Evidence": "MEASURED_VENDOR + VENDOR_GUIDANCE; observable: physical proximity requires a manually confirmed port map",
+    "Action": "Test separation distance or a USB 2 extension and compare radio stability. Test: T_RF. Sources: INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R09",
+    "Criterion": "Dongle connected to a USB 3 dock or SuperSpeed hub",
+    "Evidence": "VENDOR_GUIDANCE; observable: topology known, RF coupling unknown",
+    "Action": "For radio problems, use an RF A/B test instead of prohibiting USB 3 generally. Test: T_RF. Sources: INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R10",
+    "Criterion": "Multiple wireless dongles directly next to each other",
+    "Evidence": "VENDOR_GUIDANCE; observable: physical proximity confirmed",
+    "Action": "Separate receivers for a comparison; a conflict is not inevitable. Test: T_RF. Sources: INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R11",
+    "Criterion": "2.4 GHz Wi-Fi or many BSS networks near a gaming dongle",
+    "Evidence": "SPEC + VENDOR_GUIDANCE; observable: Wi-Fi frequency may require permission",
+    "Action": "Compare 5 GHz Wi-Fi only for observed radio errors. Test: T_RF. Sources: INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R12",
+    "Criterion": "Bluetooth input device instead of a wired or 2.4 GHz connection",
+    "Evidence": "DEVICE-SPECIFIC_MEASUREMENT; observable: connection type known; effect is device-specific",
+    "Action": "Do not transfer mouse-review latency figures to gamepads. Historical V4/Gamepadla reports lower mean Bluetooth latency for Sony pads than stock wired mode (DualSense 6.0–9.0 vs. 7.8–11.3 ms), but more jitter and outliers up to 28 ms; Xbox/Flydigi/GameSir favor wired or dongle modes. Assess the specific model and jitter. These historical references remain unverified here. Test: T_RATE. Sources: REG_CHI.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R13",
+    "Criterion": "Advertised 8 kHz HID actually uses ordinary Full-Speed interrupt transfers",
+    "Evidence": "SPEC + OS_DOC; observable: link speed and associated endpoint",
+    "Action": "Check the High-Speed path and firmware mode. Test: T_RATE. Sources: MS_ENDPOINT,WOOT_8K.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R14",
+    "Criterion": "HID on an additional PCIe USB controller",
+    "Evidence": "VENDOR_GUIDANCE; observable: PCI ID checked against a verified list",
+    "Action": "Do not assume a general latency penalty for xHCI add-in boards. Test: T_PORT. Sources: MS_USBVIEW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R15",
+    "Criterion": "HID on chipset xHCI rather than CPU xHCI",
+    "Evidence": "NO EVIDENCE in either direction; the igor'sLAB reference was withdrawn in V4, section 8.1; observable: controller/board mapping",
+    "Action": "No CPU-port bonus and no claim of measured equality; topology information only. Test: T_PORT. Sources: none.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R16",
+    "Criterion": "A 1 kHz HID alone behind a functioning hub",
+    "Evidence": "SPEC + MEASURED; Wimmer et al., CHI 2019 section 6.3: no measurable addition from USB 2.0/3.0 hubs in the tested Linux-host keypress setup at up to 1 kHz, 5,000 measurements per condition; observable: hub/link known",
+    "Action": "No automatic lag penalty. Test: T_PORT. Sources: MS_ENDPOINT,REG_CHI.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R17",
+    "Criterion": "A 1 kHz mouse and keyboard share a root controller",
+    "Evidence": "NO_EVIDENCE_OF_GENERAL_CONFLICT; observable: controller membership",
+    "Action": "No intervention based on shared controller membership alone. Test: T_LOAD. Sources: MS_BW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R18",
+    "Criterion": "Input device behind a Thunderbolt or USB4 dock",
+    "Evidence": "OS_DOC; E2E_UNKNOWN; observable: actual hub/PCIe controller chain where available",
+    "Action": "Compare a direct connection only for reproducible errors. The regular USB 2 path at USB4/TB4 uses D+/D− and USB 2 hubs; some Thunderbolt docks also expose PCIe-tunneled xHCI controllers. Do not infer behavior from the dock brand alone. Test: T_PORT. Sources: MS_USB4.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R19",
+    "Criterion": "Selective Suspend enabled in the plan and device actually eligible",
+    "Evidence": "OS_DOC + VENDOR_GUIDANCE; observable: eligibility and idle state also required",
+    "Action": "Use a reversible comparison only for resume problems. Test: T_WAKE. Sources: MS_HIDSEL.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R20",
+    "Criterion": "Selective Suspend enabled in the plan while the inbox HID driver opted out",
+    "Evidence": "OS_DOC; observable: device/driver state",
+    "Action": "Do not claim an effect. Test: T_WAKE. Sources: MS_HIDSEL.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R21",
+    "Criterion": "Hub supports idle power-down and resume errors are documented",
+    "Evidence": "OS_DOC + VENDOR_GUIDANCE; observable: an active problem condition required",
+    "Action": "Compare hub power states manually. Test: T_WAKE/T_ETW. Sources: MS_ETW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R22",
+    "Criterion": "ASPM enabled with USB controller behind PCIe",
+    "Evidence": "MECHANISTIC_PLAUSIBLE; observable: power plan/controller path",
+    "Action": "No blanket recommendation to disable ASPM. Test: T_WAKE. Sources: MS_USB4.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R23",
+    "Criterion": "Core parking allowed by the power plan",
+    "Evidence": "OS_DOC + MECHANISTIC_PLAUSIBLE; observable: plan indices are not actual core residency",
+    "Action": "Do not change settings without a reproducible effect. Test: T_SOFT. Sources: MS_INPUTFIX.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R24",
+    "Criterion": "Minimum processor state below 100%",
+    "Evidence": "OS_DOC; INPUT_EFFECT_UNKNOWN; observable: plan index readable",
+    "Action": "No blanket 100% minimum processor state. Test: T_SOFT. Sources: MS_INPUTFIX.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R25",
+    "Criterion": "Energy Saver enabled during a latency measurement",
+    "Evidence": "OS_DOC; observable: system state can be checked",
+    "Action": "Document the measurement context and provide a relevant user note if needed. Test: T_SOFT. Sources: MS_INPUTFIX.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R26",
+    "Criterion": "Laptop on battery with a changing power plan",
+    "Evidence": "OS_DOC; observable: actually read AC/DC state and plan",
+    "Action": "Compare AC/DC while controlling temperature. Test: T_SOFT. Sources: MS_INPUTFIX.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R27",
+    "Criterion": "High-power audio interface on a bus-powered hub",
+    "Evidence": "VENDOR_GUIDANCE + POWER_REQUIREMENT; observable: hub power/device model; available budget uncertain",
+    "Action": "Compare a direct, adequately powered port. Test: T_POWER. Sources: FOC_POWER,MS_HUB.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R28",
+    "Criterion": "SuperSpeed capture and another sustained SuperSpeed load share a hub",
+    "Evidence": "SPEC + VENDOR_GUIDANCE; observable: shared SS upstream and actual load",
+    "Action": "Compare a separate SS upstream. Test: T_VIDEO. Sources: ELG_FREEZE.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R29",
+    "Criterion": "8 kHz High-Speed HID on a USB 2 socket under xHCI",
+    "Evidence": "SPEC + OS_DOC; observable: High-Speed and bInterval=1 verified",
+    "Action": "Do not automatically prefer a USB 3 socket. Test: T_RATE. Sources: MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R30",
+    "Criterion": "Reconnecting changes LocationPath",
+    "Evidence": "OS_DOC; observable: PnP change and parent mapping",
+    "Action": "Repeat the before/after measurement. Test: T_PORT. Sources: MS_DEVCHANGE.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R31",
+    "Criterion": "High-polling device or 2.4 GHz dongle on a front panel",
+    "Evidence": "MECHANISTIC_PLAUSIBLE + VENDOR; observable: front-panel location confirmed by user/board documentation",
+    "Action": "Do not always move it to the rear; assess RF and hub tradeoffs separately. Test: T_PORT/T_RF. Sources: INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R32",
+    "Criterion": "High-polling device or dongle on a monitor hub with other devices",
+    "Evidence": "SPEC + VENDOR; observable: shared upstream and active traffic; RF is separate",
+    "Action": "Evaluate polling and radio as separate cases. Test: T_LOAD/T_RF. Sources: MS_BW,INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R33",
+    "Criterion": "KVM emulation established with reduced polling or re-enumeration",
+    "Evidence": "DEVICE-SPECIFIC_OBSERVATION; observable: emulation mode and a specific error",
+    "Action": "Consider true USB passthrough or a direct connection. Test: T_RATE/T_BOOT. Sources: MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R34",
+    "Criterion": "DDM/passthrough KVM without a measured conflict",
+    "Evidence": "VENDOR_GUIDANCE; observable: manufacturer profile and current USB path",
+    "Action": "Switching time is not ongoing report latency. Test: T_PORT. Sources: MS_USBVIEW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R35",
+    "Criterion": "USB4 or Thunderbolt dock used during gaming",
+    "Evidence": "OS_DOC; E2E_UNKNOWN; observable: dock topology partially available",
+    "Action": "Treat direct connection as an A/B test, not a universal requirement. Test: T_PORT. Sources: MS_USB4.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R36",
+    "Criterion": "RGB/fan controller on an internal header",
+    "Evidence": "MECHANISTIC_PLAUSIBLE; observable: USB device/interface",
+    "Action": "No general controller penalty. Test: T_SOFT. Sources: MS_USBVIEW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R37",
+    "Criterion": "xHCI uses an active INTx resource instead of MSI",
+    "Evidence": "OS_DOC; GAIN_UNKNOWN; observable: assigned CM interrupt resource",
+    "Action": "No automatic MSI registry change. Test: T_ETW. Sources: MS_ETW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R38",
+    "Criterion": "8 kHz device with IMODI greater than zero",
+    "Evidence": "SPEC; PERFORMANCE_UNKNOWN; observable: IMOD is UNKNOWN without privileged reads",
+    "Action": "Do not set it to zero; research only. Test: T_RATE. Sources: MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R39",
+    "Criterion": "Multiple devices at 4 kHz or above suspected to share an interrupter",
+    "Evidence": "MECHANISTIC_PLAUSIBLE; observable: mapping is not known from PnP",
+    "Action": "No interrupter-coupling score. Test: T_LOAD. Sources: MS_ENDPOINT.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R40",
+    "Criterion": "Front panel with a connected SuperSpeed device",
+    "Evidence": "MECHANISTIC_PLAUSIBLE; observable: neither RF proximity nor shielding quality is known automatically",
+    "Action": "Provide an RF note only with an additional dongle/error condition. Test: T_RF. Sources: INTEL_RF.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R41",
+    "Criterion": "KVM with unknown true passthrough behavior",
+    "Evidence": "UNKNOWN; observable: manufacturer/device identity may be insufficient",
+    "Action": "Missing evidence is not proof of a polling limit. Test: T_BOOT/T_RATE. Sources: MS_USBVIEW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R42",
+    "Criterion": "Dock with Selective Suspend enabled in the power plan",
+    "Evidence": "OS_DOC; observable: the plan alone does not establish actual suspension",
+    "Action": "Check device/hub state and resume first. Test: T_WAKE. Sources: MS_HIDSEL.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R43",
+    "Criterion": "Raw Input background listener or queue coalescing biases timing",
+    "Evidence": "OS_DOC + MEASUREMENT_BIAS; observable: foreground/listener/process state can be captured",
+    "Action": "Assess measurement quality instead of USB hardware. Test: T_SOFT. Sources: MS_INPUTFIX,MS_RAW.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R44",
+    "Criterion": "Unknown UVC webcam transfer mode is incorrectly counted as isochronous",
+    "Evidence": "VENDOR_DOC_CONTRADICTION; observable: endpoint/active mode unclear",
+    "Action": "Do not trigger an isochronous-bandwidth rule. Test: T_VIDEO. Sources: ELG_TRANS.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  },
+  {
+    "Id": "R45",
+    "Criterion": "SuperSpeed-capable device uses a slower link type",
+    "Evidence": "OS_DOC; observable: EX_V2 capabilities and active link speed",
+    "Action": "Check cable, port, adapter and mode; classify as PROBLEM only if the required function needs SuperSpeed. Test: T_VIDEO/T_POWER. Sources: MS_CONNV2.",
+    "ResearchStatus": "historical_unverified_except_microsoft_api_references",
+    "Source": "docs/RESEARCH_V4_1.md §§11,20"
+  }
+]

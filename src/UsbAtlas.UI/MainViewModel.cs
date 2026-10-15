@@ -101,15 +101,29 @@ public sealed class MainViewModel : INotifyPropertyChanged
         get
         {
             int problems = findings.Count(f => f.Status == Assessment.Problem);
+            int checks = findings.Count(f => f.Status == Assessment.Check);
             int notes = findings.Count(f => f.Status == Assessment.Note);
-            int ok = findings.Count(f => f.Status == Assessment.Ok);
-            return $"{problems} problems · {notes} notes · {ok} confirmed properties · configuration check, not a latency measurement";
+            int unknown = findings.Count(f => f.Status == Assessment.NotAssessable);
+            return $"{problems} confirmed problems · {checks} comparison tests · {notes} notes · {unknown} rule/device cases cannot be assessed (missing observations, not errors)";
         }
     }
 
-    public string FindingsText => findings.Length == 0
-        ? "No findings. The observed properties give no reason for a note."
-        : string.Join("\n\n", findings.OrderBy(f => f.Status switch { Assessment.Problem => 0, Assessment.Note => 1, _ => 2 }).Select(Format));
+    public string Coverage => $"{findings.Select(f => f.RuleId).Distinct().Count()} rule contracts · only supported preconditions are evaluated · not a latency benchmark";
+
+    public string FindingsText
+    {
+        get
+        {
+            var shown = findings.Where(f => f.Status != Assessment.NotAssessable)
+                .OrderBy(f => f.Status switch { Assessment.Problem => 0, Assessment.Check => 1, Assessment.Note => 2, _ => 3 })
+                .ToArray();
+            return shown.Length == 0 ? "No findings. The observed properties give no reason for a note." : string.Join("\n\n", shown.Select(Format));
+        }
+    }
+
+    /// <summary>Rules whose preconditions this scanner did not observe, grouped by rule.</summary>
+    public string UnknownText => string.Join("\n\n", findings.Where(f => f.Status == Assessment.NotAssessable).GroupBy(f => f.RuleId)
+        .Select(g => $"{g.Key} · {g.First().Title}\nMissing: {string.Join("; ", g.First().Missing)}"));
 
     public string ScanWarnings
     {
@@ -182,12 +196,12 @@ public sealed class MainViewModel : INotifyPropertyChanged
         get
         {
             if (selectedNode == null) return "";
-            var own = findings.Where(f => f.NodeId == selectedNode.Id).ToArray();
+            var own = findings.Where(f => f.NodeId == selectedNode.Id && f.Status != Assessment.NotAssessable).ToArray();
             if (expert) return own.Length == 0 ? "No findings for this node." : string.Join("\n\n", own.Select(Format));
-            var actionable = own.Where(f => f.Status != Assessment.Ok).Select(f => f.Explanation).ToArray();
+            var actionable = own.Where(f => f.Status is Assessment.Problem or Assessment.Check).Select(f => f.Explanation).ToArray();
             return actionable.Length > 0
                 ? string.Join("\n\n", actionable)
-                : "No connection problem in the observed properties of this node. Expert mode shows the confirmed properties.";
+                : "No configuration problem is established in the observed properties. Other properties cannot yet be assessed. Expert mode shows the confirmed properties.";
         }
     }
 
@@ -257,7 +271,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private string Format(Finding f)
     {
         string where = current?.Find(f.NodeId) is { } node ? NodeName(node) : f.NodeId;
-        return $"{f.Status.ToString().ToUpperInvariant()} · {where}\n{f.Title}\n{f.Explanation}\nObserved: {string.Join("; ", f.Observed)}\nSource: {string.Join("; ", f.Sources)}\nLimitation: {f.Limitations}";
+        return $"{StatusText(f.Status)} · {where}\n{f.Title}\n{f.Explanation}\nObserved: {string.Join("; ", f.Observed)}\nSource: {string.Join("; ", f.Sources)}\nLimitation: {f.Limitations}";
     }
 
     private static string RoleDescription(UsbNode d) => d.FunctionRoles.Length > 0
@@ -279,6 +293,15 @@ public sealed class MainViewModel : INotifyPropertyChanged
         LinkSpeed.Super => "SuperSpeed",
         LinkSpeed.SuperPlus => "SuperSpeedPlus",
         _ => "Speed unknown"
+    };
+
+    public static string StatusText(Assessment status) => status switch
+    {
+        Assessment.Ok => "OK",
+        Assessment.Note => "NOTE",
+        Assessment.Check => "CHECK",
+        Assessment.Problem => "PROBLEM",
+        _ => "NOT ASSESSABLE"
     };
 
     public static string StateText(PortState state) => state switch

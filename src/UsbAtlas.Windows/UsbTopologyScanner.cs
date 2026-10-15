@@ -30,7 +30,7 @@ public sealed class UsbTopologyScanner(DiagnosticActivityGate gate) : IUsbTopolo
     }
 
     private static string Fingerprint(UsbSnapshot s) => string.Join('\n', s.Nodes.OrderBy(n => n.Id).Select(n =>
-        $"{n.Id}|{n.ParentId}|{n.InstanceId}|{n.ContainerId}|{n.SerialNumber}|{n.ConnectionStatus}|{n.Speed}|{n.CurrentConfiguration}|{n.ConfigurationDescriptorHex}|{string.Join(',', n.OpenPipes)}|{string.Join(',', n.Unknowns)}"));
+        $"{n.Id}|{n.ParentId}|{n.InstanceId}|{n.ContainerId}|{n.SerialKey}|{n.ConnectionStatus}|{n.Speed}|{n.CurrentConfiguration}|{n.ConfigurationDescriptorHex}|{string.Join(',', n.OpenPipes)}|{string.Join(',', n.Unknowns)}"));
 
     private static UsbSnapshot Capture(CancellationToken token)
     {

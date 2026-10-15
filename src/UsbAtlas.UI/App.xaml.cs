@@ -42,6 +42,7 @@ public partial class App : Application
         var services = new ServiceCollection()
             .AddSingleton<DiagnosticActivityGate>()
             .AddSingleton<IUsbTopologyScanner, UsbTopologyScanner>()
+            .AddSingleton<UsbEvidenceRegistry>()
             .AddSingleton<UsbRuleEngine>()
             .AddSingleton(new UsbSnapshotManager(DataDirectory()))
             .AddSingleton<MainViewModel>()

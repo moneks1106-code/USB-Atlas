@@ -1,6 +1,7 @@
 # Implementation status — 0.2.0
 
-USB Atlas is a read-only USB topology viewer for Windows 11 x64 with a single tree page.
+USB Atlas is a read-only USB topology viewer for Windows 11 x64 with a single tree page
+and an explainable, evidence-limited assessment.
 
 ## Implemented
 
@@ -10,19 +11,32 @@ USB Atlas is a read-only USB topology viewer for Windows 11 x64 with a single tr
 - Composite-device normalization and logical input-function roles.
 - Hotplug invalidation and two verification captures per refresh, with bounded retries.
 - The latest consistent snapshot is stored locally and shown at startup.
-- Three checks on observed data, each with source and limitation:
-  `HID_SERVICE_INTERVAL`, `SUPERSPEED_LINK` and `PORT_ERROR` in `UsbRuleEngine`.
+- R01–R45 contracts (`rules-v4.1.json`, `UsbRuleEngine`) with explicit missing observations
+  and source limitations. Revision-bound `RuleObservations` carry separately validated
+  facts (mode contracts, active isochronous or sustained load, RF exposure, feasible tests).
+- Snapshot comparison by device identity (`UsbSnapshotManager.Compare`) and the R30
+  port-change rule, available in Core for a future comparison view.
 - Presentation-only CPU/chipset hint for known controller PCI IDs (`ControllerPlacementHint`).
 - Expert mode with descriptors, open pipes, offered endpoints and data gaps.
 
-## Removed in 0.2.0
+## Assessment coverage
 
-- The 45-rule catalog and its observation contracts. Only three of those rules could ever
-  produce a result from data this scanner captures; the rest reported "not assessable".
-- Snapshot comparison, baseline, port mapping, role assignment, export and guide pages,
-  which had no UI since 0.1.5.
-- German enum values and the English display layer for them.
-- Unbounded snapshot history. Only `latest.json` is written now.
+R29 describes the offered service interval of a qualifying High-Speed interrupt endpoint.
+R45 distinguishes SuperSpeed capability from the link in use. R15 and R17 record controller
+membership without inferring a conflict. Documented connection error statuses create
+enumeration findings. All other rules need observations this scanner does not capture and
+remain "not assessable"; the assessment flyout lists them with their missing preconditions.
+
+## Changed in 0.2.0
+
+- Enum values and comparison kinds are English (`Ok`, `Note`, `Check`, `Problem`,
+  `NotAssessable`; `Changed`, `Unchanged`). The German-to-English display layer is gone.
+- The view model only contains what the single tree page uses. Baseline, port mapping,
+  role assignment, export and guide code without a UI since 0.1.5 was removed. The
+  placement advisor and port mapper went with it; `TestFeasibleDevices` can be supplied
+  through `RuleObservations` when a mapping source exists again.
+- Only `latest.json` is written instead of an unbounded snapshot history.
+- MIT license added.
 
 ## Limitations
 

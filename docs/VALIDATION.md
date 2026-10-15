@@ -2,9 +2,9 @@
 
 ## Automated
 
-- 79 xUnit tests cover descriptor parsing, composite normalization, the three checks,
-  snapshot persistence, the configuration summary, controller hints, tree layout, colors
-  and the view model with a fake scanner.
+- 105 xUnit tests cover descriptor parsing, composite normalization, rule preconditions and
+  observation contracts, identity-aware comparison, snapshot persistence, the configuration
+  summary, controller hints, tree layout, colors and the view model with a fake scanner.
 - Core, Windows and CLI projects and the test suite build and run on Linux with
   `-p:EnableWindowsTargeting=true`. The WinUI project builds on Windows only.
 

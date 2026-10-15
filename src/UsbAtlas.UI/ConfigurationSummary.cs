@@ -2,31 +2,31 @@ using UsbAtlas.Core;
 
 namespace UsbAtlas.UI;
 
-/// <summary>The heading above the tree: what the observed configuration shows, in one sentence.</summary>
+/// <summary>The heading above the tree. Confirmed problems come first; missing observations limit the conclusion.</summary>
 internal sealed record ConfigurationSummary(string Title, string Body)
 {
     internal static ConfigurationSummary Create(UsbSnapshot? snapshot, IEnumerable<Finding> findings)
     {
         if (snapshot == null)
-            return new("Your USB tree is waiting for its first scan.", "Refresh reads your controllers, hubs, ports and devices.");
+            return new("Your USB tree is waiting for its first scan.", "Refresh scans your devices and checks the observable connections.");
 
         var list = findings.ToArray();
         int problems = list.Count(f => f.Status == Assessment.Problem);
-        int notes = list.Count(f => f.Status == Assessment.Note);
-        bool gaps = snapshot.Warnings.Length > 0 || snapshot.Nodes.Any(n => n.Unknowns.Length > 0);
-        string gapText = gaps ? " Some properties could not be read; see the scan data gaps." : "";
+        int tests = list.Count(f => f.Status == Assessment.Check);
+        bool incomplete = !snapshot.Consistent || snapshot.Warnings.Length > 0 || snapshot.Nodes.Any(n => n.Unknowns.Length > 0)
+            || list.Any(f => f.Status == Assessment.NotAssessable);
 
         if (problems > 0)
-            return new(problems == 1 ? "One port reports a connection error." : $"{problems} ports report connection errors.",
-                "Assessment details list the affected ports and the reported status." + gapText);
+            return new(problems == 1 ? "Your USB configuration has one detected problem." : $"Your USB configuration has {problems} detected problems.",
+                "Assessment details show the observed errors and their evidence." + (incomplete ? " Other properties cannot yet be assessed." : ""));
         if (!snapshot.Controllers.Any() || !snapshot.Devices.Any())
-            return new("No USB devices were captured.", "Refresh and check the scan data gaps in the assessment details.");
+            return new("Your USB configuration cannot be assessed yet.", "No controllers or connected devices were captured. Refresh the snapshot and check the scan details.");
         if (!snapshot.Consistent)
-            return new("The snapshot is inconsistent.", "The topology changed during the scan. Refresh to run another verification scan.");
-        if (notes > 0)
-            return new(notes == 1 ? "No connection errors. One note is worth a look." : $"No connection errors. {notes} notes are worth a look.",
-                "Assessment details explain each note. This is a configuration check, not a latency measurement." + gapText);
-        return new("No connection errors in the observed USB tree.",
-            "This is a configuration check, not a latency measurement." + gapText);
+            return new("Your USB configuration cannot be assessed reliably yet.", "The snapshot is inconsistent. Refresh to run another verification scan.");
+
+        string title = tests > 0 ? "No confirmed USB problems. Further checks are available." : "Your observed USB configuration looks healthy.";
+        string body = (tests > 0 ? $"{tests} evidence-based comparison tests are listed in the assessment details. " : "No verified configuration problems detected. ")
+            + (incomplete ? "Missing data limits the assessment; optimal performance has not been established." : "This is a configuration check, not a latency measurement.");
+        return new(title, body);
     }
 }

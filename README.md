@@ -17,11 +17,12 @@ USBView shows, and draws it as a color-coded tree you can click through.
 - **Hub depth and link speed per device.** Click a device to see whether it is on a root
   port or behind one or more hubs, which port it sits on, and whether it negotiated
   Low, Full, High or SuperSpeed.
-- **Three honest checks on the observed data.** No guesswork, each with its source and limits:
-  - the service interval a HID device's open interrupt endpoint offers (e.g. 125 µs,
-    up to 8000 reports per second), which is the ceiling, not a measured rate;
-  - SuperSpeed-capable devices that are running on a USB 2 link, so you can check cable and port;
-  - ports where Windows reports a connection error.
+- **An explainable assessment.** 45 rule contracts (R01–R45) are evaluated against the
+  observed data. Each finding names what was observed, what is missing, its source and its
+  limits. From the data this scanner captures, the rules that can conclude today are the
+  offered HID service interval, the SuperSpeed link check and Windows connection errors.
+  Rules that need traffic, mode or RF observations stay "not assessable" until a separate,
+  validated observation source feeds them; they are listed, not hidden.
 - **CPU or chipset hint for root hubs.** For known PCI IDs the root hub card says
   *Likely CPU/SoC* or *Likely chipset*, with the public source behind the hint. Unknown
   IDs say so instead of guessing.
@@ -30,7 +31,7 @@ USBView shows, and draws it as a color-coded tree you can click through.
 
 ## What it is not
 
-It is a topology viewer and configuration check, not a benchmark. It does not measure
+It is a topology viewer and evidence-limited configuration check, not a benchmark. It does not measure
 latency, report rates or traffic, does not rank ports, and does not change any setting,
 driver or power plan. Model hints do not verify motherboard wiring.
 
@@ -63,6 +64,12 @@ on Linux as well. For a read-only hardware smoke check without the UI:
 ```powershell
 dotnet run --project src/UsbAtlas.Cli -c Release -- --output artifacts/scan.json
 ```
+
+## Documentation
+
+- [Rule contracts and limits](docs/RESEARCH_V4_1.md)
+- [Implementation status](docs/IMPLEMENTATION_STATUS.md)
+- [Validation](docs/VALIDATION.md)
 
 ## License
 
