@@ -1,28 +1,20 @@
-# Validation — 0.1.5
+# Validation — 0.2.0
 
-## Completed
+## Automated
 
-- 112 automated tests pass, with no skipped tests.
-- Release build and unpackaged self-contained x64 publish succeed without warnings or errors.
-- Real Windows launch and UI checks cover the English heading, controls, root hints,
-  assessment findings, technical details and legacy generated-text presentation.
-- A real setup with four controllers, 27 logical ports and six physical devices was checked.
-  All ports fit the maximized tree using compact cards for 21 confirmed-empty ports.
-- Layout cases include maximized content sizes of 1860×760 and 2480×1120, narrow windows,
-  nested hubs, collapsed branches, bounds, non-overlap and connection routing.
-- Tests cover descriptor parsing, composite normalization, explicit rule preconditions,
-  identity ambiguity, snapshot persistence, companion-port occupancy and comparison limits.
+- 79 xUnit tests cover descriptor parsing, composite normalization, the three checks,
+  snapshot persistence, the configuration summary, controller hints, tree layout, colors
+  and the view model with a fake scanner.
+- Core, Windows and CLI projects and the test suite build and run on Linux with
+  `-p:EnableWindowsTargeting=true`. The WinUI project builds on Windows only.
 
-Private hardware captures, serial numbers and device instance IDs are not distributed.
-The public Windows package is built without application debug symbols and with mapped source
-paths, then checked for accidental local-account/build-path data.
+## Manual, outstanding for 0.2.0
 
-## Outstanding
+- Launch of the WinUI app on real hardware after the 0.2.0 refactor: tree, node details,
+  assessment flyout, expert mode and the error bar.
+- Cross-check against USBView/USBTreeView on more PCs and hub/dock types.
+- Clean Windows 11 VM without development tools.
+- Different DPI/text scaling, keyboard and screen-reader acceptance.
 
-- Independent USBView/USBTreeView cross-checks across more PCs and hub/dock types.
-- Real manual replug between controllers and with two identical devices.
-- A clean Windows 11 VM without development tools.
-- 1080p/1440p/4K, different DPI/text scaling, keyboard and screen-reader acceptance.
-- Separate validated observation sources for currently unavailable load, RF and device modes.
-
-These checks do not establish optimal performance or a measured gaming-latency improvement.
+The public Windows package is built without application debug symbols and with mapped
+source paths. Private hardware captures are not distributed.

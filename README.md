@@ -1,81 +1,70 @@
 # USB Atlas
 
-A read-only Windows 11 x64 application with one page for your USB tree and an
-explainable assessment of the observed configuration. C# / .NET 10 / WinUI 3.
+See how your USB devices are actually wired: which controller, which root hub, which
+hub in between, and at what link speed. One window, one tree, read-only.
 
-**Development release. The full hardware validation matrix is not yet complete.**
-The application reads real Windows USB data. It does not generate demo devices,
-calculate a latency score, modify system settings or make network requests.
+USB Atlas is a Windows 11 x64 desktop app (C# / .NET 10 / WinUI 3). It reads the live
+USB topology through SetupAPI, CfgMgr32 and read-only hub queries, the same data that
+USBView shows, and draws it as a color-coded tree you can click through.
 
-## Download
+<!-- Add a screenshot here: docs/screenshot.png -->
 
-[Download USB Atlas 0.1.5 for Windows x64](https://github.com/moneks1106-code/USB-Atlas/releases/download/v0.1.5/USB-Atlas-0.1.5-win-x64.zip)
+## What you get
 
-See the [release page](https://github.com/moneks1106-code/USB-Atlas/releases/tag/v0.1.5) for the ZIP and SHA-256 checksum.
+- **The whole tree on one page.** Controllers at the top, then root hubs, hubs, logical
+  ports and devices. Path colors link a port to its device; a level badge tells you what
+  each card is. Collapse branches with + / −, show or hide empty ports.
+- **Hub depth and link speed per device.** Click a device to see whether it is on a root
+  port or behind one or more hubs, which port it sits on, and whether it negotiated
+  Low, Full, High or SuperSpeed.
+- **Three honest checks on the observed data.** No guesswork, each with its source and limits:
+  - the service interval a HID device's open interrupt endpoint offers (e.g. 125 µs,
+    up to 8000 reports per second), which is the ceiling, not a measured rate;
+  - SuperSpeed-capable devices that are running on a USB 2 link, so you can check cable and port;
+  - ports where Windows reports a connection error.
+- **CPU or chipset hint for root hubs.** For known PCI IDs the root hub card says
+  *Likely CPU/SoC* or *Likely chipset*, with the public source behind the hint. Unknown
+  IDs say so instead of guessing.
+- **Expert mode** adds descriptors, open pipes, offered endpoints, transaction translator
+  flags and every data gap the scan hit.
+
+## What it is not
+
+It is a topology viewer and configuration check, not a benchmark. It does not measure
+latency, report rates or traffic, does not rank ports, and does not change any setting,
+driver or power plan. Model hints do not verify motherboard wiring.
 
 ## Run
 
-Extract the entire portable release folder and run `UsbAtlas.UI.exe`. Keep all files
-and subfolders beside the executable. The .NET and Windows App SDK runtimes are included.
-No MSIX installation or administrator rights are requested. A clean Windows VM without
-development tools has not yet been validated.
+Download the latest portable ZIP from the
+[releases page](https://github.com/moneks1106-code/USB-Atlas/releases), extract the whole
+folder and run `UsbAtlas.UI.exe`. The .NET and Windows App SDK runtimes are included;
+no installation or administrator rights are needed.
 
-1. **Refresh** reads the USB hardware twice and checks that the captures are consistent.
-2. **Your USB tree** uses the full content area, with controllers at the top and hubs,
-   ports and devices below. There is no sidebar or additional page.
-3. **Empty logical ports** adds compact, individually clickable cards beneath their hub.
-   The current setup with 27 ports and six devices fits the maximized window without
-   scrolling. Small windows or much larger topologies may still scroll to keep text readable.
-4. The **heading** assesses observable properties. Confirmed problems take priority;
-   missing data limits the conclusion. **Assessment details** explains findings on the same page.
-5. **Root hubs** show **Likely CPU/SoC**, **Likely chipset** or **Connection origin unknown**.
-   Click a node for the reasoning and source. Model hints do not verify motherboard wiring
-   or demonstrate a latency difference.
-6. Level colors identify controllers, hubs, ports and devices. Path colors and labels link
-   a port to its device; colors are not a performance ranking. No zoom control is required.
-7. Click a node for details. **Expert mode** adds technical observations.
+Startup shows the last saved snapshot. **Refresh** reads the hardware twice and only
+accepts a capture when both passes agree.
 
-The interface and application-generated diagnostics are English. Known labels and scan
-messages from earlier German snapshots are rendered in English without rewriting those
-snapshots. Product names, identifiers and user-provided socket labels are preserved.
+The latest snapshot is stored as `%LOCALAPPDATA%\UsbAtlas\latest.json`. It contains
+device identifiers and serial numbers. Nothing is uploaded.
 
-Local snapshots and settings are stored in `%LOCALAPPDATA%/UsbAtlas`. They may contain
-device identifiers and serial numbers. There is no automatic upload. Startup explicitly
-shows the last saved snapshot; refresh to capture the current hardware state.
+## Build
 
-## Scope and limitations
-
-The scanner uses SetupAPI, CfgMgr32 and read-only hub IOCTL queries. It captures controller,
-hub, port and device topology, available link speed, descriptors and supported metadata.
-Composite interfaces remain one physical device. Snapshots, identity matching and comparison
-services remain available internally; the former comparison, mapping and export pages were
-removed at the user's request.
-
-All 45 rule contracts are registered, but many require observations that this scanner does
-not capture. Missing observations remain unassessable. Open pipes and descriptors do not
-prove active traffic. There is no physical end-to-end latency measurement, RF packet-loss
-measurement, active-stream sensor or verified manufacturer mode database.
-
-A presentation-only model catalog dated 2026-10-15 covers AMD 1022:15B6/15B7/15B8
-(likely CPU/SoC) and 1022:43FC (likely chipset). Other IDs remain unknown. These inferences
-are not written into verified controller classes or used to rank performance. The source
-and uncertainty are visible in the node details.
-
-## Build and test
+Requires the .NET SDK pinned in `global.json` and Windows for the WinUI project.
 
 ```powershell
-dotnet restore UsbAtlas.slnx
 dotnet test tests/UsbAtlas.Tests -c Release
 dotnet build src/UsbAtlas.UI -c Release
 ./build-release.ps1
 ```
 
-Read-only hardware smoke check:
+The test project links the UI logic (layout, colors, summary, view model) directly and runs
+on Linux as well. For a read-only hardware smoke check without the UI:
 
 ```powershell
 dotnet run --project src/UsbAtlas.Cli -c Release -- --output artifacts/scan.json
 ```
 
-The SDK version is pinned in `global.json`. Network access is needed for dependency restore,
-not for running the app. Public evidence summaries and outstanding hardware checks are documented under `docs/`.
-Private authoring research, development prompts and hardware captures are not distributed.
+## License
+
+MIT, see [LICENSE](LICENSE). Third-party components are listed in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

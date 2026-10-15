@@ -5,11 +5,12 @@
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="4.0.1"><PrivateAssets>all</PrivateAssets></PackageReference>
     <ProjectReference Include="../../src/UsbAtlas.Core/UsbAtlas.Core.csproj" />
-    <Compile Include="../../src/UsbAtlas.UI/TopologyTreeLayout.cs" Link="UI/TopologyTreeLayout.cs" />
-    <Compile Include="../../src/UsbAtlas.UI/TopologyColorScheme.cs" Link="UI/TopologyColorScheme.cs" />
-    <Compile Include="../../src/UsbAtlas.UI/ControllerPlacementHint.cs" Link="UI/ControllerPlacementHint.cs" />
+    <Compile Include="../../src/UsbAtlas.UI/Commands.cs" Link="UI/Commands.cs" />
     <Compile Include="../../src/UsbAtlas.UI/ConfigurationSummary.cs" Link="UI/ConfigurationSummary.cs" />
-    <Compile Include="../../src/UsbAtlas.UI/EnglishDisplay.cs" Link="UI/EnglishDisplay.cs" />
+    <Compile Include="../../src/UsbAtlas.UI/ControllerPlacementHint.cs" Link="UI/ControllerPlacementHint.cs" />
+    <Compile Include="../../src/UsbAtlas.UI/MainViewModel.cs" Link="UI/MainViewModel.cs" />
+    <Compile Include="../../src/UsbAtlas.UI/TopologyColorScheme.cs" Link="UI/TopologyColorScheme.cs" />
+    <Compile Include="../../src/UsbAtlas.UI/TopologyTreeLayout.cs" Link="UI/TopologyTreeLayout.cs" />
     <Using Include="Xunit" />
   </ItemGroup>
 </Project>

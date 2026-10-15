@@ -30,7 +30,7 @@ public sealed class UsbTopologyScanner(DiagnosticActivityGate gate) : IUsbTopolo
     }
 
     private static string Fingerprint(UsbSnapshot s) => string.Join('\n', s.Nodes.OrderBy(n => n.Id).Select(n =>
-        $"{n.Id}|{n.ParentId}|{n.InstanceId}|{n.ContainerId}|{n.SerialKey}|{n.ConnectionStatus}|{n.Speed}|{n.CurrentConfiguration}|{n.ConfigurationDescriptorHex}|{string.Join(',', n.OpenPipes)}|{string.Join(',', n.Unknowns)}"));
+        $"{n.Id}|{n.ParentId}|{n.InstanceId}|{n.ContainerId}|{n.SerialNumber}|{n.ConnectionStatus}|{n.Speed}|{n.CurrentConfiguration}|{n.ConfigurationDescriptorHex}|{string.Join(',', n.OpenPipes)}|{string.Join(',', n.Unknowns)}"));
 
     private static UsbSnapshot Capture(CancellationToken token)
     {
@@ -48,7 +48,7 @@ public sealed class UsbTopologyScanner(DiagnosticActivityGate gate) : IUsbTopolo
             var (vendor, product) = PciIds(id);
             nodes.Add(new UsbNode { Id = id, Kind = NodeKind.Controller, Name = device?.Name ?? "USB controller", InstanceId = id,
                 LocationPath = device?.LocationPath, VendorId = vendor, ProductId = product,
-                ControllerId = id, ControllerClass = new UsbControllerClassifier().Classify(vendor, product) });
+                ControllerId = id });
             try
             {
                 using var host = new UsbIoctl(controller.Path);
@@ -70,7 +70,7 @@ public sealed class UsbTopologyScanner(DiagnosticActivityGate gate) : IUsbTopolo
         var hubInterface = hubs.FirstOrDefault(h => Normalize(h.Path) == Normalize(path));
         var hubPnp = pnp.FirstOrDefault(p => Eq(p.InstanceId, hubInterface.InstanceId));
         var hubNode = physical ?? new UsbNode { Id = id, ParentId = parent, ControllerId = controller, Kind = NodeKind.RootHub,
-            Name = "Root-Hub", InstanceId = hubPnp?.InstanceId, LocationPath = hubPnp?.LocationPath, HubDepth = depth };
+            Name = "Root hub", InstanceId = hubPnp?.InstanceId, LocationPath = hubPnp?.LocationPath, HubDepth = depth };
         hubNode = hubNode with { HubSymbolicLink = path };
         try
         {

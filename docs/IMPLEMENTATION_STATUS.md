@@ -1,36 +1,32 @@
-# Implementation status — 0.1.5
+# Implementation status — 0.2.0
 
-Development release for Windows 11 x64. The interface is English and contains one tree
-page, an assessment heading, in-place details, explicit CPU/chipset model hints and compact
-empty-port cards. All observed parent relationships remain individually inspectable.
+USB Atlas is a read-only USB topology viewer for Windows 11 x64 with a single tree page.
 
 ## Implemented
 
 - Read-only SetupAPI/CfgMgr32 and hub GET IOCTL enumeration.
-- Controller, root-hub, hub, logical-port and physical-device topology.
-- Actual link speed and available descriptors, endpoint, companion, TT and power metadata.
-- Composite-device normalization and available logical input-function roles.
-- Hotplug invalidation and two verification captures, with bounded retries.
-- Local snapshots, identity-aware comparison, user-confirmed mappings and assessment services.
-- R01–R45 contracts with explicit missing observations and source limitations.
-- English presentation of known generated text from older German snapshots, preserving data.
+- Controller, root hub, hub, logical port and device topology with link speed, descriptors,
+  endpoint, companion, transaction translator and power metadata.
+- Composite-device normalization and logical input-function roles.
+- Hotplug invalidation and two verification captures per refresh, with bounded retries.
+- The latest consistent snapshot is stored locally and shown at startup.
+- Three checks on observed data, each with source and limitation:
+  `HID_SERVICE_INTERVAL`, `SUPERSPEED_LINK` and `PORT_ERROR` in `UsbRuleEngine`.
+- Presentation-only CPU/chipset hint for known controller PCI IDs (`ControllerPlacementHint`).
+- Expert mode with descriptors, open pipes, offered endpoints and data gaps.
 
-## Assessment coverage
+## Removed in 0.2.0
 
-R29 can describe the offered service interval of a qualifying High-Speed interrupt endpoint.
-R30 can report reliably identified port changes. R44 keeps camera transfer mode unknown
-without separate stream evidence. R45 distinguishes link capability from a proven functional
-requirement. Documented connection error statuses create enumeration findings.
+- The 45-rule catalog and its observation contracts. Only three of those rules could ever
+  produce a result from data this scanner captures; the rest reported "not assessable".
+- Snapshot comparison, baseline, port mapping, role assignment, export and guide pages,
+  which had no UI since 0.1.5.
+- German enum values and the English display layer for them.
+- Unbounded snapshot history. Only `latest.json` is written now.
 
-Additional load, RF and mode-dependent rules have tested conditional algorithms but no
-general live observation producer. Unavailable conditions remain unassessable. Full catalog
-registration is not full real-world diagnostic coverage.
+## Limitations
 
-## Explicit limitations
-
-- No physical end-to-end latency, RF loss or active traffic measurement.
-- No automatic physical socket-position inference or universal front/rear recommendation.
-- No verified motherboard-wide CPU/chipset mapping or performance ranking.
-- No automatic system, driver, firmware, registry or power-plan changes.
-- Real identical-device replug, additional platforms/hubs/docks, DPI/accessibility and clean-VM
-  validation are outstanding. See [validation](VALIDATION.md) and [evidence](RESEARCH_V4_1.md).
+- No end-to-end latency, report rate, RF or traffic measurement.
+- No physical socket position inference and no front/rear recommendation.
+- The model-hint catalog covers a handful of AMD controller IDs. Others say "unknown".
+- No system, driver, firmware, registry or power-plan changes.

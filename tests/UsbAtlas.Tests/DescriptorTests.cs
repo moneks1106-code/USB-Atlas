@@ -20,6 +20,4 @@ public class DescriptorTests
         Assert.Equal((byte)0, parsed.Endpoints[0].AlternateSetting);
         Assert.Equal((byte)1, parsed.Endpoints[1].AlternateSetting);
     }
-    [Fact] public void HistoricalPciIdsAreNotSilentlyTrusted()
-    { Assert.Equal("UNMAPPED", new UsbControllerClassifier().Classify("1022", "43F4")); }
 }

@@ -16,7 +16,7 @@
         <ToggleSwitch Grid.Column="1" Header="Expert mode" OnContent="On" OffContent="Off" IsOn="{Binding Expert, Mode=TwoWay}" VerticalAlignment="Center" ToolTipService.ToolTip="Shows technical details in each node." />
         <Button Grid.Column="2" Command="{Binding RefreshCommand}" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Center" Padding="22,12" AutomationProperties.Name="Refresh USB devices"><StackPanel Orientation="Horizontal" Spacing="10"><FontIcon Glyph="&#xE72C;" FontSize="16" /><TextBlock Text="Refresh" FontWeight="SemiBold" /></StackPanel></Button>
       </Grid>
-      <InfoBar Grid.Row="1" IsOpen="True" IsClosable="False" Severity="Error" Title="Action could not be completed" Message="{Binding Error}" Visibility="{Binding ErrorVisibility}" />
+      <InfoBar Grid.Row="1" IsOpen="{Binding HasError}" IsClosable="False" Severity="Error" Title="Action could not be completed" Message="{Binding Error}" />
       <Grid Grid.Row="2" ColumnSpacing="20">
         <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
         <StackPanel Spacing="5">

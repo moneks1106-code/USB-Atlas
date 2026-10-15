@@ -69,7 +69,7 @@ public sealed partial class MainWindow : Window
         foreach (var placement in layout.Nodes)
         {
             var node = placement.Node;
-            string nodeName = EnglishDisplay.NodeName(node);
+            string nodeName = MainViewModel.NodeName(node);
             var style = colors[node.Id];
             if (placement.IsCompact)
             {
@@ -99,14 +99,14 @@ public sealed partial class MainWindow : Window
                 NodeKind.Port => MainViewModel.StateText(node.State), NodeKind.Controller => "Host controller",
                 NodeKind.RootHub => "Root hub", _ => MainViewModel.SpeedText(node.Speed)
             };
-            text.Children.Add(new TextBlock { Text = (ViewModel.NodeChanged(node.Id) ? "Changed · " : "") + style.PathLabel + " · " + subtitle, FontSize = 12,
+            text.Children.Add(new TextBlock { Text = style.PathLabel + " · " + subtitle, FontSize = 12,
                 TextWrapping = TextWrapping.NoWrap, MaxLines = 1, TextTrimming = TextTrimming.CharacterEllipsis,
-                Foreground = Brush(ViewModel.NodeChanged(node.Id) ? "#FFD8A0" : "#BDC9D4") });
+                Foreground = Brush("#BDC9D4") });
             Grid.SetColumn(text, 1); panel.Children.Add(text);
             var button = new Button { Content = panel, Width = layout.NodeWidth, Height = layout.NodeHeight,
                 Padding = new Thickness(12), CornerRadius = new CornerRadius(12),
                 Background = Brush(style.Background), BorderBrush = Brush(style.PathColor), BorderThickness = new Thickness(1.5) };
-            ToolTipService.SetToolTip(button, (ViewModel.NodeChanged(node.Id) ? "Topology changed\n" : "") + style.LevelLabel + " · " + style.PathLabel + " · " + subtitle + "\n" + nodeName + "\n"
+            ToolTipService.SetToolTip(button, style.LevelLabel + " · " + style.PathLabel + " · " + subtitle + "\n" + nodeName + "\n"
                 + (node.Kind is NodeKind.Controller or NodeKind.RootHub ? placementHint.Label + "\n" : "")
                 + (node.Kind == NodeKind.Port ? ViewModel.PortLabel(node.Id) : node.LocationPath ?? node.Id));
             Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(button, title + ", " + style.LevelLabel + ", " + style.PathLabel);
@@ -180,9 +180,8 @@ public sealed partial class MainWindow : Window
             FontWeight = Microsoft.UI.Text.FontWeights.SemiBold, TextWrapping = TextWrapping.Wrap });
         details.Children.Add(new TextBlock { Text = ViewModel.AssessmentCounts, TextWrapping = TextWrapping.Wrap });
         details.Children.Add(new TextBlock { Text = ViewModel.FindingsText, TextWrapping = TextWrapping.Wrap, IsTextSelectionEnabled = true });
-        foreach (var section in new[] { ("Scan data gaps", ViewModel.ScanWarnings), ("Properties that cannot be assessed", ViewModel.UnknownText) })
-            details.Children.Add(new Expander { Header = section.Item1, HorizontalAlignment = HorizontalAlignment.Stretch,
-                Content = new TextBlock { Text = section.Item2, TextWrapping = TextWrapping.Wrap, IsTextSelectionEnabled = true } });
+        details.Children.Add(new Expander { Header = "Scan data gaps", HorizontalAlignment = HorizontalAlignment.Stretch,
+            Content = new TextBlock { Text = ViewModel.ScanWarnings, TextWrapping = TextWrapping.Wrap, IsTextSelectionEnabled = true } });
         new Flyout { Content = new ScrollViewer { Content = details, MaxHeight = 560,
             VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled } }.ShowAt(target);
     }
