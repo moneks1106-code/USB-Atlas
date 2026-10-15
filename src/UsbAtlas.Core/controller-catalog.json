@@ -6,977 +6,1864 @@
     {
       "id": "1022:145C",
       "name": "Family 17h (Models 00h-0fh) USB 3.0 Host Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:145F",
       "name": "Zeppelin USB 3.0 xHCI Compliant Host Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:148C",
       "name": "Starship USB 3.0 Host Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:149C",
       "name": "Matisse USB 3.0 Host Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:14CD",
+      "name": "Family 19h USB4/Thunderbolt PCIe tunnel",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:14EF",
+      "name": "Family 19h USB4/Thunderbolt PCIe tunnel",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:150A",
+      "name": "Strix/Strix Halo PCIe USB4 Bridge",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:151C",
+      "name": "USB4 Router 0",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:151D",
+      "name": "USB4 Router 1",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:1557",
       "name": "Turin USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:1587",
       "name": "Strix Halo USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:1588",
       "name": "Strix Halo USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:1589",
       "name": "Strix Halo USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:158B",
       "name": "Strix Halo USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15B6",
       "name": "Raphael/Granite Ridge USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15B7",
       "name": "Raphael/Granite Ridge USB 3.1 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15B8",
       "name": "Raphael/Granite Ridge USB 2.0 xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:15B9",
+      "name": "Phoenix USB 3.1 xHCI (observed, not named in pci.ids)",
+      "placement": "CpuSoc",
+      "confidence": "Medium",
+      "source": "Research §8.2 (Ubuntu certification, observed)"
+    },
+    {
+      "id": "1022:15BA",
+      "name": "Phoenix USB 3.1 xHCI (observed, not named in pci.ids)",
+      "placement": "CpuSoc",
+      "confidence": "Medium",
+      "source": "Research §8.2 (Ubuntu certification, observed)"
+    },
+    {
+      "id": "1022:15C4",
+      "name": "Phoenix USB4/Thunderbolt NHI controller #1",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:15C5",
+      "name": "Phoenix USB4/Thunderbolt NHI controller #2",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15D4",
       "name": "FireFlight USB 3.1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15D5",
       "name": "FireFlight USB 3.1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15D6",
       "name": "Rembrandt USB4 XHCI controller #5",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15D7",
       "name": "Rembrandt USB4 XHCI controller #6",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15E0",
       "name": "Raven USB 3.1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15E1",
       "name": "Raven USB 3.1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:15E5",
       "name": "Raven2 USB 3.1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:161A",
       "name": "Rembrandt USB4 XHCI controller #1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:161B",
       "name": "Rembrandt USB4 XHCI controller #2",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:161C",
       "name": "Rembrandt USB4 XHCI controller #7",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:161D",
       "name": "Rembrandt USB4 XHCI controller #3",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:161E",
       "name": "Rembrandt USB4 XHCI controller #4",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:161F",
       "name": "Rembrandt USB4 XHCI controller #8",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:162C",
+      "name": "VanGogh USB2",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:162E",
+      "name": "Rembrandt USB4/Thunderbolt NHI controller #1",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:162F",
+      "name": "Rembrandt USB4/Thunderbolt NHI controller #2",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:1639",
       "name": "Renoir/Cezanne USB 3.1",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:163A",
+      "name": "VanGogh USB0",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:163B",
+      "name": "VanGogh USB1",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:163C",
+      "name": "VanGogh SecUSB",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:1668",
+      "name": "Pink Sardine USB4/Thunderbolt NHI controller #1",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:1669",
+      "name": "Pink Sardine USB4/Thunderbolt NHI controller #2",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43B9",
       "name": "X370 Series Chipset USB 3.1 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43BA",
       "name": "X399 Series Chipset USB 3.1 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43BB",
       "name": "300 Series Chipset USB 3.1 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43BC",
       "name": "A320 USB 3.1 XHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1022:43D0",
+      "name": "X470 Series Chipset USB 3.1 xHCI Controller (forum report)",
+      "placement": "Chipset",
+      "confidence": "Medium",
+      "source": "Research §8.2 (forum report)"
     },
     {
       "id": "1022:43D5",
       "name": "400 Series Chipset USB 3.1 xHCI Compliant Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43EC",
       "name": "A520 Series Chipset USB 3.1 XHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43EE",
       "name": "500 Series Chipset USB 3.1 XHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43F7",
       "name": "600 Series Chipset USB 3.2 Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43F9",
       "name": "B665 Series Chipset USB 3.1 Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43FA",
       "name": "A620 Series Chipset USB 3.1 Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43FC",
       "name": "800 Series Chipset USB 3.x XHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:43FD",
       "name": "800 Series Chipset USB 3.x XHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:7404",
       "name": "AMD-755 [Cobra] USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:740C",
       "name": "AMD-756 [Viper] USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:7414",
       "name": "AMD-766 [ViperPlus] USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:7449",
       "name": "AMD-768 [Opus] USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:7461",
       "name": "AMD-8111 USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:7463",
       "name": "AMD-8111 USB EHCI",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "1022:7464",
       "name": "AMD-8111 USB OHCI",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1033:0035",
+      "name": "OHCI USB Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1033:00E0",
+      "name": "uPD72010x USB 2.0 Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1033:0194",
+      "name": "uPD720200 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1106:3038",
+      "name": "VT82xx/62xx/VX700/8x0/900 UHCI USB 1.1 Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1106:3104",
+      "name": "USB 2.0 EHCI-Compliant Host-Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1106:3432",
+      "name": "VL800/801 xHCI USB 3.0 Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1106:3483",
+      "name": "VL805/806 xHCI USB 3.0 Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1106:9201",
+      "name": "USB3.0 Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1912:0014",
+      "name": "uPD720201 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1912:0015",
+      "name": "uPD720202 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:1040",
+      "name": "ASM1040 SuperSpeed USB Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:1041",
+      "name": "ASM1041 SuperSpeed USB Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:1042",
+      "name": "ASM1042 SuperSpeed USB Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:1142",
+      "name": "ASM1042A USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:1242",
+      "name": "ASM1142 USB 3.1 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:1343",
+      "name": "ASM1143 USB 3.1 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:2142",
+      "name": "ASM2142/ASM3142 USB 3.1 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:2426",
+      "name": "ASM4242 USB 3.2 xHCI Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:3042",
+      "name": "ASM3042 USB 3.2 Gen 1 xHCI Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:3142",
+      "name": "ASM3142 USB 3.2 Gen 2x1 xHCI Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:3241",
+      "name": "ASM3241 USB 3.2 Gen 2 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B21:3242",
+      "name": "ASM3242 USB 3.2 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B6F:7023",
+      "name": "EJ168 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B6F:7052",
+      "name": "EJ188/EJ198 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B73:1000",
+      "name": "FL1000G USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B73:1009",
+      "name": "FL1009 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B73:1100",
+      "name": "FL1100 USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "1B73:1400",
+      "name": "USB 3.0 Host Controller",
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:02ED",
       "name": "400 Series Chipset Family On-Package USB 3.2 Gen 2x1 (10 Gbs) xHCI Host Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:06ED",
       "name": "400 Series Chipset Family USB 3.2 Gen 2x1 (10 Gbs) xHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:0B27",
       "name": "Thunderbolt 4 USB Controller [Goshen Ridge 2020]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:0F34",
       "name": "Atom Processor Z36xxx/Z37xxx Series USB EHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:0F35",
       "name": "Atom Processor Z36xxx/Z37xxx, Celeron N2000 Series USB xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1135",
       "name": "Thunderbolt 4 USB Controller [Maple Ridge 2C 2020]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1138",
       "name": "Thunderbolt 4 USB Controller [Maple Ridge 4C 2020]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15B5",
       "name": "DSL6340 USB 3.1 Controller [Alpine Ridge]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15B6",
       "name": "DSL6540 USB 3.1 Controller [Alpine Ridge]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15C1",
       "name": "JHL6240 Thunderbolt 3 USB 3.1 Controller (Low Power) [Alpine Ridge LP 2016]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15D4",
       "name": "JHL6540 Thunderbolt 3 USB Controller (C step) [Alpine Ridge 4C 2016]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15DB",
       "name": "JHL6340 Thunderbolt 3 USB 3.1 Controller (C step) [Alpine Ridge 2C 2016]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15E9",
       "name": "JHL7540 Thunderbolt 3 USB Controller [Titan Ridge 2C 2018]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15EC",
       "name": "JHL7540 Thunderbolt 3 USB Controller [Titan Ridge 4C 2018]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:15F0",
       "name": "JHL7440 Thunderbolt 3 USB Controller [Titan Ridge DD 2018]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:18D0",
       "name": "Atom Processor P5xxx Series USB xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:19D0",
       "name": "Atom Processor C3000 Series USB 3.0 xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1BCD",
       "name": "C740 Series (Emmitsburg) Chipsets USB 3.2 Gen 1 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1C26",
       "name": "6 Series/C200 Series Chipset Family USB Enhanced Host Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1C27",
       "name": "6 Series/C200 Series Chipset Family USB Universal Host Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1C2C",
       "name": "6 Series/C200 Series Chipset Family USB Universal Host Controller #5",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1C2D",
       "name": "6 Series/C200 Series Chipset Family USB Enhanced Host Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:1D26",
+      "name": "C600/X79 series chipset USB2 Enhanced Host Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:1D2D",
+      "name": "C600/X79 series chipset USB2 Enhanced Host Controller #2",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1E26",
       "name": "7 Series/C216 Chipset Family USB Enhanced Host Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1E2D",
       "name": "7 Series/C216 Chipset Family USB Enhanced Host Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1E31",
       "name": "7 Series/C210 Series Chipset Family USB xHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:1F2C",
       "name": "Atom processor C2000 USB Enhanced Host Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:22B5",
       "name": "Atom/Celeron/Pentium Processor x5-E8000/J3xxx/N3xxx Series USB xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:2334",
+      "name": "DH89xxCC USB2 Enhanced Host Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:2335",
+      "name": "DH89xxCC USB2 Enhanced Host Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:23B4",
+      "name": "DH895XCC Series USB2 Enhanced Host Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:23B5",
+      "name": "DH895XCC Series USB2 Enhanced Host Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2412",
       "name": "82801AA USB Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2422",
       "name": "82801AB USB Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2442",
       "name": "82801BA/BAM UHCI USB 1.1 Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2444",
       "name": "82801BA/BAM UHCI USB 1.1 Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2452",
       "name": "82801E USB Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2482",
       "name": "82801CA/CAM USB Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2484",
       "name": "82801CA/CAM USB Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2487",
       "name": "82801CA/CAM USB Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24C2",
       "name": "82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24C4",
       "name": "82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24C7",
       "name": "82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:24CD",
+      "name": "82801DB/DBM (ICH4/ICH4-M) USB2 EHCI Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24D2",
       "name": "82801EB/ER (ICH5/ICH5R) USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24D4",
       "name": "82801EB/ER (ICH5/ICH5R) USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24D7",
       "name": "82801EB/ER (ICH5/ICH5R) USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:24DD",
+      "name": "82801EB/ER (ICH5/ICH5R) USB2 EHCI Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:24DE",
       "name": "82801EB/ER (ICH5/ICH5R) USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:25A9",
       "name": "6300ESB USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:25AA",
       "name": "6300ESB USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:25AD",
+      "name": "6300ESB USB2 Enhanced Host Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2658",
       "name": "82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2659",
       "name": "82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:265A",
       "name": "82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:265B",
       "name": "82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:265C",
+      "name": "82801FB/FBM/FR/FW/FRW (ICH6 Family) USB2 EHCI Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2688",
       "name": "631xESB/632xESB/3100 Chipset UHCI USB Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2689",
       "name": "631xESB/632xESB/3100 Chipset UHCI USB Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:268A",
       "name": "631xESB/632xESB/3100 Chipset UHCI USB Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:268B",
       "name": "631xESB/632xESB/3100 Chipset UHCI USB Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:268C",
+      "name": "631xESB/632xESB/3100 Chipset EHCI USB2 Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:27C8",
       "name": "NM10/ICH7 Family USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:27C9",
       "name": "NM10/ICH7 Family USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:27CA",
       "name": "NM10/ICH7 Family USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:27CB",
       "name": "NM10/ICH7 Family USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:27CC",
+      "name": "NM10/ICH7 Family USB2 EHCI Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2830",
       "name": "82801H (ICH8 Family) USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2831",
       "name": "82801H (ICH8 Family) USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2832",
       "name": "82801H (ICH8 Family) USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2833",
       "name": "82801H (ICH8 Family) USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2834",
       "name": "82801H (ICH8 Family) USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2835",
       "name": "82801H (ICH8 Family) USB UHCI Controller #5",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:2836",
+      "name": "82801H (ICH8 Family) USB2 EHCI Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:283A",
+      "name": "82801H (ICH8 Family) USB2 EHCI Controller #2",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2934",
       "name": "82801I (ICH9 Family) USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2935",
       "name": "82801I (ICH9 Family) USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2936",
       "name": "82801I (ICH9 Family) USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2937",
       "name": "82801I (ICH9 Family) USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2938",
       "name": "82801I (ICH9 Family) USB UHCI Controller #5",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:2939",
       "name": "82801I (ICH9 Family) USB UHCI Controller #6",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:293A",
+      "name": "82801I (ICH9 Family) USB2 EHCI Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:293C",
+      "name": "82801I (ICH9 Family) USB2 EHCI Controller #2",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:31A8",
       "name": "Celeron/Pentium Silver Processor USB 3.0 xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:34ED",
       "name": "Ice Lake-LP USB 3.1 xHCI Host Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A34",
       "name": "82801JI (ICH10 Family) USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A35",
       "name": "82801JI (ICH10 Family) USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A36",
       "name": "82801JI (ICH10 Family) USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A37",
       "name": "82801JI (ICH10 Family) USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A38",
       "name": "82801JI (ICH10 Family) USB UHCI Controller #5",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A39",
       "name": "82801JI (ICH10 Family) USB UHCI Controller #6",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:3A3A",
+      "name": "82801JI (ICH10 Family) USB2 EHCI Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:3A3C",
+      "name": "82801JI (ICH10 Family) USB2 EHCI Controller #2",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A64",
       "name": "82801JD/DO (ICH10 Family) USB UHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A65",
       "name": "82801JD/DO (ICH10 Family) USB UHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A66",
       "name": "82801JD/DO (ICH10 Family) USB UHCI Controller #3",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A67",
       "name": "82801JD/DO (ICH10 Family) USB UHCI Controller #4",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A68",
       "name": "82801JD/DO (ICH10 Family) USB UHCI Controller #5",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3A69",
       "name": "82801JD/DO (ICH10 Family) USB UHCI Controller #6",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:3A6A",
+      "name": "82801JD/DO (ICH10 Family) USB2 EHCI Controller #1",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:3A6C",
+      "name": "82801JD/DO (ICH10 Family) USB2 EHCI Controller #2",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:3B34",
+      "name": "5 Series/3400 Series Chipset USB2 Enhanced Host Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B36",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B37",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B38",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B39",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B3A",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B3B",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:3B3C",
+      "name": "5 Series/3400 Series Chipset USB2 Enhanced Host Controller",
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B3E",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B3F",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:3B40",
       "name": "5 Series/3400 Series Chipset USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:43ED",
       "name": "500 Series Chipset Family USB 3.2 Gen 2x2 (20 Gbs) xHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:461E",
       "name": "Alder Lake-P Thunderbolt 4 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:464E",
       "name": "Alder Lake-N Processor USB 3.2 xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:4B7D",
       "name": "Elkhart Lake USB 3.10 XHCI",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:4D31",
+      "name": "Wildcat Lake Thunderbolt 4 USB Controller",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "coreboot src/include/device/pci_ids.h"
+    },
+    {
+      "id": "8086:4D7D",
+      "name": "Wildcat Lake USB 3.2 xHCI Host Controller",
+      "placement": "OnPackageChipset",
+      "confidence": "Medium",
+      "source": "coreboot src/include/device/pci_ids.h"
     },
     {
       "id": "8086:4DED",
       "name": "Jasper Lake USB 3.1 xHCI Host Controller",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:51ED",
       "name": "Alder Lake PCH USB 3.2 xHCI Host Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:54ED",
       "name": "Alder Lake-N PCH USB 3.2 Gen 2x1 (10 Gb/s) xHCI Host Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:5782",
       "name": "JHL9580 Thunderbolt 5 80/120G USB Controller [Barlow Ridge Host 80G 2023]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:5785",
       "name": "JHL9540 Thunderbolt 4 USB Controller [Barlow Ridge Host 40G 2023]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:5787",
       "name": "JHL9480 Thunderbolt 5 80/120G USB Controller [Barlow Ridge Hub 80G 2023]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:57A5",
       "name": "JHL9440 Thunderbolt 4 USB Controller [Barlow Ridge Hub 40G 2023]",
-      "placement": "DiscreteController"
+      "placement": "DiscreteController",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:5AA8",
       "name": "Celeron N3350/Pentium N4200/Atom E3900 Series USB xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:6E6E",
       "name": "Nova Lake PCH-S USB 3.2 xHCI HC",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7020",
       "name": "82371SB PIIX3 USB [Natoma/Triton II]",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7112",
       "name": "82371AB/EB/MB PIIX4 USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:719A",
       "name": "82440MX USB Universal Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7602",
       "name": "82372FB PIIX5 USB",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:777D",
       "name": "Core Ultra 200H/200V Series Processors Standalone xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7A60",
       "name": "700 Series Chipset Family USB 3.2 Gen 2x2 (20 Gbs) xHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7AE0",
       "name": "600 Series Chipset Family USB 3.2 Gen 2x2 (20Gbs) XHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7E7D",
       "name": "Meteor Lake-P USB 3.2 Gen 2x1 xHCI Host Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
+    },
+    {
+      "id": "8086:7EB0",
+      "name": "Meteor Lake-M Thunderbolt 4 USB Controller",
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "coreboot src/include/device/pci_ids.h"
     },
     {
       "id": "8086:7EC0",
       "name": "Core Ultra 200 Series Processors USB xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:7F6E",
       "name": "800 Series Chipset Family USB 3.1 xHCI HC",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8A13",
       "name": "Ice Lake Thunderbolt 3 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8C26",
       "name": "8 Series/C220 Series Chipset Family USB EHCI #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8C2D",
       "name": "8 Series/C220 Series Chipset Family USB EHCI #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8C31",
       "name": "8 Series/C220 Series Chipset Family USB xHCI",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8CA6",
       "name": "9 Series Chipset Family USB EHCI Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8CAD",
       "name": "9 Series Chipset Family USB EHCI Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8CB1",
       "name": "9 Series Chipset Family USB xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8D26",
       "name": "C610/X99 series chipset USB Enhanced Host Controller #1",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8D2D",
       "name": "C610/X99 series chipset USB Enhanced Host Controller #2",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:8D31",
       "name": "C610/X99 series chipset USB xHCI Host Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9A13",
       "name": "Tiger Lake-LP Thunderbolt 4 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9A17",
       "name": "Tiger Lake-H Thunderbolt 4 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9C26",
       "name": "8 Series USB EHCI #1",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9C2D",
       "name": "8 Series USB EHCI #2",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9C31",
       "name": "8 Series USB xHCI HC",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9CA6",
       "name": "Wildcat Point-LP USB EHCI Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9CB1",
       "name": "Wildcat Point-LP USB xHCI Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9D2F",
       "name": "Sunrise Point-LP USB 3.0 xHCI Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:9DED",
       "name": "Cannon Point-LP USB 3.1 xHCI Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A0ED",
       "name": "500 Series Chipset Family On-Package USB 3.2 Gen 2x1 (10 Gbs) xHCI Host Controller",
-      "placement": "OnPackageChipset"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A12F",
       "name": "100/C230 Series Chipset Family USB 3.0 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A1AF",
       "name": "C620 Series Chipset Family USB 3.0 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A22F",
       "name": "C620 Series Chipset Family (Super) USB 3.0 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A2AF",
       "name": "200 Series/Z370 Chipset Family USB 3.0 xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A36D",
       "name": "300/C240 Series Chipset Family USB 3.1 xHCI",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A3AF",
       "name": "B460/H410 Chipset USB 3.2 Gen 1x1 (5 Gbs) xHCI Controller",
-      "placement": "Chipset"
+      "placement": "Chipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A71E",
       "name": "Raptor Lake-P Thunderbolt 4 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A831",
       "name": "Core Ultra 200V Series Processors Type-C Subsystem xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:A87D",
       "name": "Core Ultra 200V Series Processors Standalone xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:D331",
       "name": "Nova Lake-H Thunderbolt 5 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:D37D",
       "name": "Core Ultra Processors (Series 4) Standalone xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:D431",
       "name": "Nova Lake-S Thunderbolt 5 USB Controller",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:E331",
       "name": "Core Ultra Processors (Series 3) Type-C Subsystem xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:E37D",
       "name": "Core Ultra Processors (Series 3) Standalone xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:E431",
       "name": "Core Ultra Processors (Series 3) Type-C Subsystem xHCI",
-      "placement": "CpuSoc"
+      "placement": "CpuSoc",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     },
     {
       "id": "8086:E47D",
       "name": "Core Ultra Processors (Series 3) Standalone xHCI Controller",
-      "placement": "CpuSoc"
+      "placement": "OnPackageChipset",
+      "confidence": "High",
+      "source": "pci.ids 2026.10.15"
     }
   ]
 }

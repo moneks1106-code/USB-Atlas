@@ -89,6 +89,9 @@ public sealed record UsbSnapshot(Guid Revision, DateTimeOffset CapturedUtc, stri
 /// <summary>Result of one rule on one node. Every finding names what was observed, what is missing and what it does not prove.</summary>
 public sealed record Finding(string RuleId, string NodeId, Assessment Status, string Title, string Explanation,
     string[] Observed, string[] Missing, string[] Sources, string Scope, string Limitations);
+public sealed record PortMapping(string PortId, string Label, string HubFingerprint, DateTimeOffset ConfirmedUtc);
+public sealed record PlacementProposal(string DeviceId, string RuleId, string? TargetPortId,
+    string Instruction, string Reason, string ExpectedChange, string Limitations);
 public sealed record DeviceDelta(string? BeforeId, string? AfterId, string IdentityConfidence, string Kind,
     string[] Changes, string? BeforePort, string? AfterPort, string? BeforeController, string? AfterController,
     string[] BeforeHubs, string[] AfterHubs);

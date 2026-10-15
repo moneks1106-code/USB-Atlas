@@ -22,13 +22,16 @@ USBView shows, and draws it as a color-coded tree you can click through.
   limits. From the data this scanner captures, the rules that can conclude today are the
   offered HID service interval, the SuperSpeed link check and Windows connection errors.
   Rules that need traffic, mode or RF observations stay "not assessable" until a separate,
-  validated observation source feeds them; they are listed, not hidden.
+  validated observation source feeds them; they are listed, not hidden. Any measurement tool
+  can supply such observations as a JSON file per snapshot, see
+  [docs/OBSERVATIONS.md](docs/OBSERVATIONS.md).
 - **CPU or chipset hint for root hubs.** The root hub card says *Likely CPU/SoC*,
   *Likely chipset*, *Likely chipset (on CPU package)* or *Likely add-in controller*, based on
-  the controller's name in the PCI ID Repository. The catalog covers about 200 Intel and
-  AMD USB host controllers from ICH to the current Core Ultra and Ryzen platforms. Click
-  the card for the pci.ids entry and the reasoning. IDs outside the catalog say so instead
-  of guessing.
+  the controller's name in the PCI ID Repository. The catalog covers 266 Intel, AMD,
+  ASMedia, VIA, Renesas, Fresco Logic and Etron USB host controllers from ICH to the current
+  Core Ultra and Ryzen platforms. Click the card for the entry, its source and confidence.
+  Unknown Intel IDs fall back to the PCI location rule at medium confidence; everything
+  else says "unknown" instead of guessing.
 - **Expert mode** adds descriptors, open pipes, offered endpoints, transaction translator
   flags and every data gap the scan hit.
 
@@ -71,6 +74,7 @@ dotnet run --project src/UsbAtlas.Cli -c Release -- --output artifacts/scan.json
 ## Documentation
 
 - [Rule contracts and limits](docs/RESEARCH_V4_1.md)
+- [External observations](docs/OBSERVATIONS.md)
 - [Implementation status](docs/IMPLEMENTATION_STATUS.md)
 - [Validation](docs/VALIDATION.md)
 

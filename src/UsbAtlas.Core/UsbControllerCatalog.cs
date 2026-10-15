@@ -16,7 +16,9 @@ public enum ControllerPlacement
     DiscreteController
 }
 
-public sealed record ControllerCatalogEntry(string Id, string Name, ControllerPlacement Placement);
+/// <param name="Confidence">"High" for entries named in pci.ids, "Medium" for IDs taken from secondary sources.</param>
+/// <param name="Source">Where the ID and name come from.</param>
+public sealed record ControllerCatalogEntry(string Id, string Name, ControllerPlacement Placement, string Confidence, string Source);
 
 /// <summary>
 /// Intel and AMD USB host controllers from the PCI ID Repository, each with a placement class.

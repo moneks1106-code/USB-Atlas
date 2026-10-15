@@ -18,7 +18,55 @@ public class MainViewModelTests : IDisposable
 
     private readonly string directory = Path.Combine(Path.GetTempPath(), "UsbAtlasTests", Guid.NewGuid().ToString());
 
-    private MainViewModel Create(FakeScanner scanner) => new(scanner, new UsbSnapshotManager(directory), new UsbRuleEngine(new UsbEvidenceRegistry()));
+    private MainViewModel Create(FakeScanner scanner) => new(scanner, new UsbSnapshotManager(directory), new UsbRuleEngine(new UsbEvidenceRegistry()), new UsbObservationStore(directory));
+
+    private async Task WriteObservations(RuleObservations observations)
+    {
+        var store = new UsbObservationStore(directory);
+        Directory.CreateDirectory(store.FolderPath);
+        await File.WriteAllTextAsync(store.PathFor(observations.Revision), System.Text.Json.JsonSerializer.Serialize(observations, UsbSnapshotManager.JsonOptions));
+    }
+
+    [Fact]
+    public async Task ExternalModeContractTurnsFullSpeedLinkIntoAProblem()
+    {
+        var snapshot = Fixture.Simple();
+        snapshot = snapshot with { Nodes = snapshot.Nodes.Select(n => n.Id == "c/root/1/device" ? n with { Speed = LinkSpeed.Full } : n).ToArray() };
+        await WriteObservations(RuleObservations.Empty(snapshot.Revision) with
+        {
+            Modes = [new("c/root/1/device", 0x81, 8000, true, "mouse-tester session 42", true, 0)]
+        });
+        var vm = Create(new FakeScanner(() => snapshot));
+        await vm.InitializeAsync();
+        Assert.True(vm.HasObservations);
+        Assert.Contains("External observations applied", vm.Message);
+        Assert.Equal("Your USB configuration has one detected problem.", vm.StatusTitle);
+        Assert.Contains("mouse-tester session 42", vm.FindingsText);
+    }
+
+    [Fact]
+    public async Task ObservationFileForAnotherRevisionIsIgnoredWithAnError()
+    {
+        var snapshot = Fixture.Simple();
+        var store = new UsbObservationStore(directory);
+        Directory.CreateDirectory(store.FolderPath);
+        await File.WriteAllTextAsync(store.PathFor(snapshot.Revision),
+            System.Text.Json.JsonSerializer.Serialize(RuleObservations.Empty(Guid.NewGuid()), UsbSnapshotManager.JsonOptions));
+        var vm = Create(new FakeScanner(() => snapshot));
+        await vm.InitializeAsync();
+        Assert.False(vm.HasObservations);
+        Assert.StartsWith("Observation file ignored", vm.Error);
+        Assert.NotNull(vm.Snapshot);
+    }
+
+    [Fact]
+    public async Task NoObservationFileMeansNoObservations()
+    {
+        var vm = Create(new FakeScanner(Fixture.Simple));
+        await vm.InitializeAsync();
+        Assert.False(vm.HasObservations);
+        Assert.Null(await new UsbObservationStore(directory).LoadAsync(vm.Snapshot!.Revision));
+    }
 
     public void Dispose()
     {

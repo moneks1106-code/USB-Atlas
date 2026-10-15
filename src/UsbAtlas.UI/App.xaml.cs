@@ -45,6 +45,9 @@ public partial class App : Application
             .AddSingleton<UsbEvidenceRegistry>()
             .AddSingleton<UsbRuleEngine>()
             .AddSingleton(new UsbSnapshotManager(DataDirectory()))
+            .AddSingleton(new UsbObservationStore(DataDirectory()))
+            .AddSingleton<UsbPortMapper>()
+            .AddSingleton<UsbPlacementAdvisor>()
             .AddSingleton<MainViewModel>()
             .BuildServiceProvider();
         window = new MainWindow(services.GetRequiredService<MainViewModel>());

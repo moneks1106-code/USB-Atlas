@@ -18,6 +18,7 @@ public sealed class UsbEvidenceRegistry
         ["MS_CONNV2"] = "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/usbioctl/ns-usbioctl-_usb_node_connection_information_ex_v2_flags",
         ["MS_BW"] = "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/usb-bandwidth-allocation",
         ["MS_TT"] = "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/usbioctl/ns-usbioctl-_usb_hub_cap_flags",
+        ["MS_PORTPROPS"] = "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/usbioctl/ns-usbioctl-_usb_port_properties",
         ["MS_LOC"] = "https://learn.microsoft.com/en-us/windows-hardware/drivers/install/locationpath-registry-subkey",
         ["ELG_TRANS"] = "https://help.elgato.com/hc/en-us/articles/4681224843917-Elgato-Facecam-How-To-Change-USB-Transfer-Mode",
         ["INTEL_RF"] = "https://cdrdv2-public.intel.com/841692/usb30radiofrequencyinterference.pdf"

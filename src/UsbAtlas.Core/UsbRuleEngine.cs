@@ -76,6 +76,9 @@ public sealed class UsbRuleEngine(UsbEvidenceRegistry registry)
                         Set(Assessment.Check, "Two verified sustained SuperSpeed loads share a hub connection. Separate upstream paths provide a testable comparison.", "Shared SS upstream", "Two active sustained loads", "Comparison test possible"); break;
                     case "R08" when device.Role == DeviceRole.Receiver && Has("RF_24GHZ_EXPOSURE", device.Id, input.ConfirmedRfExposedDevices) && test:
                         Set(Assessment.Check, "Physical exposure to SuperSpeed was confirmed for this 2.4 GHz receiver path. Separation distance can be compared under controlled conditions.", "2.4 GHz path and RF exposure confirmed separately", "Comparison test possible"); sources = [UsbEvidenceRegistry.Sources["INTEL_RF"]]; scope = "RF"; break;
+                    case "R36" when snapshot.Find(device.ParentId) is { Kind: NodeKind.Port, UserConnectable: false }:
+                        Set(Assessment.Note, "The device sits on a port that Windows reports as not user-connectable, typically an internal header for RGB, fan or board controllers. Internal devices share the hub or controller like any other device; no conflict is established.",
+                            "PortIsUserConnectable=false", $"Port={device.ParentId}"); sources = [UsbEvidenceRegistry.Sources["MS_PORTPROPS"]]; scope = "TOPOLOGY"; break;
                     case "R15":
                         Set(Assessment.Note, "Controller membership is captured. Verified CPU/chipset placement is unknown without a validated mapping; no performance difference is inferred.", device.ControllerId ?? "Controller unknown"); break;
                     case "R17" when (device.DeviceClass == 3 || device.InterfaceClasses.Contains((byte)3)) && interrupt.Length > 0:
@@ -115,6 +118,7 @@ public sealed class UsbRuleEngine(UsbEvidenceRegistry registry)
         "R30" => ["Identity and port change in a snapshot comparison"],
         "R44" => ["UVC-Interface", "Active transfer mode and ongoing transfers"],
         "R45" => ["EX_V2 SuperSpeed capability", "Active speed", "Functional requirement / feasible comparison"],
+        "R36" => ["Device on a port reported as not user-connectable (internal header)"],
         "R37" or "R38" or "R39" => ["Assigned interrupt/interrupter/IMOD properties; research only, not observable by this scanner"],
         "R19" or "R20" or "R21" or "R22" or "R23" or "R24" or "R25" or "R26" or "R27" or "R42" => ["Device-specific power/driver state", "Specific requirement or resume observation"],
         "R43" => ["Separate measurement channel with foreground/queue/load data (P3)"],

@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Input;
 using UsbAtlas.Core;
 
@@ -12,7 +13,9 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private readonly IUsbTopologyScanner scanner;
     private readonly UsbSnapshotManager manager;
     private readonly UsbRuleEngine rules;
+    private readonly UsbObservationStore observations;
     private UsbSnapshot? current;
+    private RuleObservations? currentObservations;
     private Finding[] findings = [];
     private UsbNode? selectedNode;
     private bool busy, expert, showEmptyPorts;
@@ -22,11 +25,12 @@ public sealed class MainViewModel : INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
     public event EventHandler? TopologyChanged;
 
-    public MainViewModel(IUsbTopologyScanner scanner, UsbSnapshotManager manager, UsbRuleEngine rules)
+    public MainViewModel(IUsbTopologyScanner scanner, UsbSnapshotManager manager, UsbRuleEngine rules, UsbObservationStore observations)
     {
         this.scanner = scanner;
         this.manager = manager;
         this.rules = rules;
+        this.observations = observations;
         RefreshCommand = new AsyncCommand(RefreshAsync, ex => Error = ex.Message);
     }
 
@@ -39,8 +43,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
             var saved = await manager.LoadLatestAsync();
             if (saved != null)
             {
-                Apply(saved);
-                Message = "Last saved snapshot. Refresh to capture the current state.";
+                await ApplyAsync(saved);
+                Message = "Last saved snapshot. Refresh to capture the current state." + ObservationNote;
             }
             else
             {
@@ -250,8 +254,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
         {
             var scan = await scanner.ScanAsync();
             await manager.SaveLatestAsync(scan);
-            Apply(scan);
-            Message = "Snapshot saved. Click a node for details. Colors mark the tree level and path, not a performance ranking.";
+            await ApplyAsync(scan);
+            Message = "Snapshot saved. Click a node for details. Colors mark the tree level and path, not a performance ranking." + ObservationNote;
         }
         finally
         {
@@ -259,10 +263,23 @@ public sealed class MainViewModel : INotifyPropertyChanged
         }
     }
 
-    private void Apply(UsbSnapshot snapshot)
+    /// <summary>Text appended to the status message when an external observation file was applied.</summary>
+    public string ObservationNote => currentObservations == null ? "" : " External observations applied from " + observations.PathFor(currentObservations.Revision) + ".";
+    public bool HasObservations => currentObservations != null;
+
+    private async Task ApplyAsync(UsbSnapshot snapshot)
     {
         current = snapshot;
-        findings = rules.Evaluate(snapshot);
+        try
+        {
+            currentObservations = await observations.LoadAsync(snapshot.Revision);
+        }
+        catch (Exception ex) when (ex is IOException or JsonException or InvalidDataException)
+        {
+            currentObservations = null;
+            Error = "Observation file ignored: " + ex.Message;
+        }
+        findings = rules.Evaluate(snapshot, currentObservations);
         selectedNode = selectedNode == null ? null : snapshot.Find(selectedNode.Id);
         ChangedAll();
         TopologyChanged?.Invoke(this, EventArgs.Empty);

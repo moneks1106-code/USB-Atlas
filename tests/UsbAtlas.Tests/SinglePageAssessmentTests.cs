@@ -45,9 +45,35 @@ public class SinglePageAssessmentTests
         var c = Controller(id, vendor);
         var hint = ControllerPlacementHint.For(Snapshot(c), c);
         Assert.Equal(label, hint.Label);
-        Assert.Contains($"PCI {vendor}:{id} is listed in pci.ids", hint.Explanation);
+        Assert.Contains($"PCI {vendor}:{id} is listed as", hint.Explanation);
+        Assert.Contains("pci.ids", hint.Source);
         Assert.Contains("does not verify the motherboard wiring", hint.Explanation);
         Assert.NotNull(hint.Source);
+    }
+
+    [Theory]
+    [InlineData("8086", "0000", @"PCIROOT(0)#PCI(1400)", "Probably chipset")]
+    [InlineData("8086", "0000", @"PCIROOT(0)#PCI(0D00)", "Probably CPU (Thunderbolt/USB4 subsystem)")]
+    [InlineData("8086", "0000", @"PCIROOT(0)#PCI(1C04)#PCI(0000)", "Probably add-in controller")]
+    [InlineData("1234", "0000", @"PCIROOT(0)#PCI(0102)#PCI(0000)", "Probably add-in controller")]
+    [InlineData("8086", "0000", @"PCIROOT(0)#PCI(1F00)", "Connection origin unknown")]
+    [InlineData("1234", "0000", @"PCIROOT(0)#PCI(1400)", "Connection origin unknown")]
+    [InlineData("8086", "0000", null, "Connection origin unknown")]
+    public void UnknownIdsFallBackToTheLocationRuleWithMediumConfidence(string vendor, string id, string? path, string label)
+    {
+        var c = Controller(id, vendor) with { LocationPath = path };
+        var hint = ControllerPlacementHint.For(Snapshot(c), c);
+        Assert.Equal(label, hint.Label);
+        if (label.StartsWith("Probably")) Assert.Contains("medium", hint.Explanation);
+    }
+
+    [Fact]
+    public void MediumConfidenceCatalogEntriesSaySo()
+    {
+        var c = Controller("15B9");
+        var hint = ControllerPlacementHint.For(Snapshot(c), c);
+        Assert.Equal("Likely CPU/SoC", hint.Label);
+        Assert.Contains("Confidence: medium", hint.Explanation);
     }
 
     [Fact]
