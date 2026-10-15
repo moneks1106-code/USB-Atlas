@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/UsbAtlas.Cli/UsbAtlas.Cli.csproj" />
+    <Project Path="src/UsbAtlas.Core/UsbAtlas.Core.csproj" />
+    <Project Path="src/UsbAtlas.UI/UsbAtlas.UI.csproj" />
+    <Project Path="src/UsbAtlas.Windows/UsbAtlas.Windows.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/UsbAtlas.Tests/UsbAtlas.Tests.csproj" />
+  </Folder>
+</Solution>
