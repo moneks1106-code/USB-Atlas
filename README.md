@@ -2,10 +2,9 @@
 
 **USB Atlas has moved into [InputLab](https://github.com/moneks1106-code/InputLab): one free Windows app for your mouse, your controllers and the PC they run on. This repository is no longer updated.**
 
-### 
-➡
-️
- [Download InputLab](https://github.com/moneks1106-code/InputLab/releases/latest)
+### ➡️ [Download InputLab](https://github.com/moneks1106-code/InputLab/releases/latest)
+
+### 💬 [Join the InputLab Discord](https://discord.gg/3kEktvD4zm)
 
 ## USB Atlas in InputLab
 
